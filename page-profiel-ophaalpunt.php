@@ -101,7 +101,7 @@ get_header(); the_post(); ?>
                             else
                             {
                                 // could not query DB, so why even bother? no languages to choose from, but form can maybe continue?
-                                show_myrecy_message("error", "De MyRecy-databank is momenteel niet bereikbaar, dus kan de taalvoorkeuren niet opzoeken. Gelieve even te wachten en opnieuw te proberen. Indien het probleem zich blijft voordoen, contacteer ons voor hulp.)";
+                                show_myrecy_message("error", "De MyRecy-databank is momenteel niet bereikbaar, dus kan de taalvoorkeuren niet opzoeken. Gelieve even te wachten en opnieuw te proberen. Indien het probleem zich blijft voordoen, contacteer ons voor hulp.");
                                 exit; // still continue? Doesn't this give trouble with trying to commit the form?
                             }
                 ?>
@@ -175,7 +175,7 @@ get_header(); the_post(); ?>
                                 if($result->num_rows < 1)
                                 {
                                     // no results found, so why even bother? quit! + show error message for users to contact adminstration
-                                    show_myrecy_message("error", "Geen soorten gevonden in de databank, contacteer ons voor hulp.)";
+                                    show_myrecy_message("error", "Geen soorten gevonden in de databank, contacteer ons voor hulp.");
                                     $result->close();
                                     exit;
                                 }
