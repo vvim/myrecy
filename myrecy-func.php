@@ -1,10 +1,4 @@
 <?php
-// logged in? Else go to login and exit.
-if (!is_user_logged_in())
-{
-	wp_redirect( home_url()."/login" );
-	exit;
-}
 
 function show_myrecy_message($style, $message)
 {
