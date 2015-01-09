@@ -2,7 +2,7 @@
 // logged in? Else go to login and exit.
 if (!is_user_logged_in())
 {
-	header("Location: ".get_bloginfo('url'));
+	wp_redirect( home_url()."/login" );
 	exit;
 }
 
