@@ -31,6 +31,11 @@ input.number-input-slim {
 	width: 50px;
 }
 
+input.contact-input-hidden {
+	visibility: hidden;
+	display: none;
+}
+
 /* feedback to the user, taken from http://aviaryan.in/blog/css-notification-bubble-box.html */
 .symbol {
     font-size: 0.9em;
