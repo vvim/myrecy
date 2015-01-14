@@ -56,7 +56,7 @@ get_header(); the_post(); ?>
 
                     if($statement->execute())
                     {
-                      	show_myrecy_message("good","Hoeveelheden zijn doorgegeven aan De Vlaspit");
+                      	show_myrecy_message("good","Hoeveelheden zijn doorgegeven aan De Vlaspit: ".$zakken_kurk." zakken kurk en ".$zakken_kaarsresten." zakken kaarsresten.");
                         // ID of last inserted record is : ' .$statement->insert_id ';
                     }
                     else
