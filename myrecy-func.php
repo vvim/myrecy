@@ -1,5 +1,7 @@
 <?php
 
+setlocale(LC_ALL, 'nl_NL');
+
 function show_myrecy_message($style, $message)
 {
    // based on http://aviaryan.in/blog/css-notification-bubble-box.html
