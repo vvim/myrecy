@@ -34,6 +34,8 @@ get_header(); the_post(); ?>
             }
 		?>
 
+	<form action="<?php echo $_SERVER['REQUEST_URI']; ?>" method="post">
+
 		<h3>Adres ophaalpunt</h3>
 		<table class="form-table-myrecy">
 		<tr>
@@ -112,19 +114,11 @@ get_header(); the_post(); ?>
 		<tr>
 			<th><label for="telefoon1">Telefoon</label></th>
 			<td><input type="text" name="telefoon1" id="telefoon1" value="<?php echo $ophaalpunt_from_db->telefoonnummer1; ?>" class="regular-text" /></td>
-<!-- Seems more reasonable, no? Or does this give trouble when uploading the data?
-		</tr>
-		<tr>
-			<th><label for="telefoon2">of</label></th>  -->
 			<td><input type="text" name="telefoon2" id="telefoon2" value="<?php echo $ophaalpunt_from_db->telefoonnummer2; ?>" class="regular-text" /></td>
 		</tr>
 		<tr>
 			<th><label for="email1">Email</label></th>
 			<td><input type="text" name="email1" id="email1" value="<?php echo $ophaalpunt_from_db->email1; ?>" class="regular-text" /></td>
-<!--
-		</tr>
-		<tr>
-			<th><label for="email2">of</label></th> -->
 			<td><input type="text" name="email2" id="email2" value="<?php echo $ophaalpunt_from_db->email2; ?>" class="regular-text" /></td>
 		</tr>
 		<tr>
@@ -168,7 +162,7 @@ get_header(); the_post(); ?>
 		<tr>
 			<th><label for="soortophaalpunt">Soort ophaalpunt</label></th>
 			<td>
-				<select name="soortophaalpunt" id="soortophaalpunt"><?php
+				<select name="soortophaalpunt" id="soortophaalpunt" onclick="show_types_of_intercommunale()"><?php
 				    		if ($result = $MYRECY_mysqli->query("SELECT * FROM soort_ophaalpunt"))
                     		{
                                 //printf("Select returned %d rows.\n", $result->num_rows);
@@ -179,8 +173,11 @@ get_header(); the_post(); ?>
                                     $result->close();
                                     exit;
                                 }
+                                $intercommunale_code = 1;
                                 while($soorten = $result->fetch_object())
                                 {
+                                    if($soorten->soort == "intercommunale")
+                                        $intercommunale_code = $soorten->code;
                                     if($soorten->code == $ophaalpunt_from_db->code)
                                         printf("\n\t\t\t\t\t<option value=\"%d\" selected>%s</option>", $soorten->code, $soorten->soort);
                                     else
@@ -198,14 +195,155 @@ get_header(); the_post(); ?>
 
 				</select>
 			</td>
+            <td>
+				<select name="code_intercommunale" id="code_intercommunale" onclick="show_types_of_intercommunale()"><?php
+				    		if ($result = $MYRECY_mysqli->query("SELECT * FROM intercommunales"))
+                    		{
+                                //printf("Select returned %d rows.\n", $result->num_rows);
+                                if($result->num_rows < 1)
+                                {
+                                    // no results found, so why even bother? quit! + show error message for users to contact adminstration
+                                    show_myrecy_message("error", "Geen intercommunales gevonden in de databank, contacteer ons voor hulp.");
+                                    $result->close();
+                                    exit;
+                                }
+                                while($intercommunales = $result->fetch_object())
+                                {
+                                    if($intercommunales->id == $ophaalpunt_from_db->code_intercommunale)
+                                        printf("\n\t\t\t\t\t<option value=\"%d\" selected>%s</option>", $intercommunales->id, $intercommunales->naam_intercommunale);
+                                    else
+                                        printf("\n\t\t\t\t\t<option value=\"%d\">%s</option>", $intercommunales->id, $intercommunales->naam_intercommunale);
+                                }
+                                $result->close();
+                            }
+                            else
+                            {
+                                // could not query DB, so why even bother? no languages to choose from, but form can maybe continue?
+                                show_myrecy_message("error", "De MyRecy-databank is momenteel niet bereikbaar, dus kan de soorten ophaalpunten niet opzoeken. Gelieve even te wachten en opnieuw te proberen. Indien het probleem zich blijft voordoen, contacteer ons voor hulp.");
+                                exit; // still continue? Doesn't this give trouble with trying to commit the form?
+                            }
+                ?>
+
+				</select>
+            </td>
+		</tr>
+		<tr>
+			<th><label for="soortmateriaal">Materiaal</label></th>
+            <td>
+                <input type="checkbox" name="materiaal" value="kurk" <?php if($ophaalpunt_from_db->kurk > 0) echo "checked"; ?> /> kurk
+            </td>
+            <td>
+                <input type="checkbox" name="materiaal" value="kaarsresten" <?php if($ophaalpunt_from_db->parafine > 0) echo "checked"; ?> /> kaarsresten
+            </td>
+		</tr>
+		<tr>
+			<th><label for="attesten">Attest nodig?</label></th>
+            <td>
+                <input type="checkbox" name="attest" value="attest_nodig" <?php if($ophaalpunt_from_db->attest_nodig > 0) echo "checked"; ?>  onclick="show_attest_frequency()" /> ja
+            </td>
+            <td>
+				<select name="attest_frequentie" id="attest_frequentie" onclick="show_attest_frequency()"><?php
+				    		if ($result = $MYRECY_mysqli->query("SELECT * FROM frequentie"))
+                    		{
+                                //printf("Select returned %d rows.\n", $result->num_rows);
+                                if($result->num_rows < 1)
+                                {
+                                    // no results found, so why even bother? quit! + show error message for users to contact adminstration
+                                    show_myrecy_message("error", "Geen frequenties gevonden in de databank, contacteer ons voor hulp.");
+                                    $result->close();
+                                    exit;
+                                }
+                                while($frequencies = $result->fetch_object())
+                                {
+                                    if($frequencies->id == $ophaalpunt_from_db->frequentie_attest)
+                                        printf("\n\t\t\t\t\t<option value=\"%d\" selected>%s</option>", $frequencies->id, $frequencies->frequentie);
+                                    else
+                                        printf("\n\t\t\t\t\t<option value=\"%d\">%s</option>", $frequencies->id, $frequencies->frequentie);
+                                }
+                                $result->close();
+                            }
+                            else
+                            {
+                                // could not query DB, so why even bother? no languages to choose from, but form can maybe continue?
+                                show_myrecy_message("error", "De MyRecy-databank is momenteel niet bereikbaar, dus kan de soorten ophaalpunten niet opzoeken. Gelieve even te wachten en opnieuw te proberen. Indien het probleem zich blijft voordoen, contacteer ons voor hulp.");
+                                exit; // still continue? Doesn't this give trouble with trying to commit the form?
+                            }
+                ?>
+
+                </select>
+            </td>
 		</tr>
 	</table>
+    <?php wp_nonce_field( 'profiel_wijziging_'.get_current_user_id().$ophaalpunt_from_db->id ); ?>
 
-<p><strong>TODO Wim:</strong>voor 'intercommunales' zie BH-XMLHttpRequest om mogelijkheden weer te geven</p>
+    <input type="submit" value="Wijzigingen opslaan">
+    </form>
 
+    <script>
+            <!--
+            
+            // script to show/hide the types of intercommunales or attest frequency
+
+            function show_attest_frequency()
+            {
+                if(document.all.attest.checked)
+                    document.all.attest_frequentie.style.visibility="visible"
+                else
+                    document.all.attest_frequentie.style.visibility="hidden"
+            }
+            
+            function show_types_of_intercommunale()
+            {
+                intercommunale = <?php echo $intercommunale_code; ?>;
+                
+                if (document.all.soortophaalpunt.value == intercommunale)
+                    document.all.code_intercommunale.style.visibility="visible"
+                else
+                    document.all.code_intercommunale.style.visibility="hidden"
+            }
+           
+           /* window.load handling, see http://www.htmlgoodies.com/beyond/javascript/article.php/3724571/Using-Multiple-JavaScript-Onload-Functions.htm
+           and http://blog.simonwillison.net/post/57956760515/addloadevent (Simon Willison)
+           */
+            function addLoadEvent(func)
+            {
+                var oldonload = window.onload;
+                if (typeof window.onload != 'function')
+                {
+                    window.onload = func;
+                }
+                else
+                {
+                    window.onload = function()
+                    {
+                        if (oldonload)
+                        {
+                            oldonload();
+                        }
+                        func();
+                    }
+                }
+            }
+            
+            addLoadEvent(show_types_of_intercommunale);
+            addLoadEvent(show_attest_frequency);
+
+            //-->
+    </script>
+
+<?php
+function my_scripts_method() {
+	wp_enqueue_script(
+		'custom-script',
+		get_stylesheet_directory_uri() . '/js/custom_script.js',
+		array( 'jquery' )
+	);
+}
+
+add_action( 'wp_enqueue_scripts', 'my_scripts_method' );
+?>
 	</div>
 
-	<?php if(is_singular()) comments_template(); ?>
 </div>
 	
 <?php get_footer() ?>
