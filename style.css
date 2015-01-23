@@ -36,6 +36,13 @@ input.contact-input-hidden {
 	display: none;
 }
 
+span.ophaalhistoriek-disabled {
+	padding: 2px;
+	padding-left: 2em;
+	color: white;
+	background-color: lightgray;
+}
+
 /* feedback to the user, taken from http://aviaryan.in/blog/css-notification-bubble-box.html */
 .symbol {
     font-size: 0.9em;
