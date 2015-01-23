@@ -160,7 +160,7 @@ get_header(); the_post(); ?>
 		</tr>
 		<tr>
 			<th><label for="opmerkingen">Opmerkingen</label></th>
-			<td colspan="2"><textarea name="opmerkingen" id="opmerkingen" rows="5" cols="30"><?php /* to strip the MyRecy remark to avoid dubbels, thank you! */  echo $opmerkingen_form; ?></textarea></td>
+			<td colspan="2"><textarea name="opmerkingen" id="opmerkingen" rows="5" cols="30"><?php /* to strip the MyRecy remark to avoid dubbels, thank you! */  echo htmlspecialchars($opmerkingen_form); ?></textarea></td>
 		</tr>
 	</table>
 
