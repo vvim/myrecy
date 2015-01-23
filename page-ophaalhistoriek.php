@@ -27,7 +27,28 @@ get_header(); the_post(); ?>
             }
         }
 
-		// zie http://php.net/manual/en/mysqli.query.php
+        function print_attest_frequency_select( $frequency )
+        {
+            switch ($frequency)
+            {
+                case 1:
+                    //"maandelijks"; taken from 'FractalizeR' at http://stackoverflow.com/questions/1449167/list-of-all-months-and-year-between-two-dates-in-php
+                    for ($i = GetMonthsFromDate($StartDate), $i <= GetMonthsFromDate($StopDate), $i++)
+                    {
+                        echo(GetDateFromMonths($i));
+                    }
+                    break;
+                case 2:
+                    return "trimester";
+                    break;
+                case 3:
+                    return "jaarlijks";
+                    break;
+            }
+        }
+
+
+        // zie http://php.net/manual/en/mysqli.query.php
 		if ($result = $MYRECY_mysqli->query("SELECT ophaalpunten.* FROM wordpress_link, ophaalpunten WHERE wordpress_userid = $user_ID AND ophaalpunt_id = ophaalpunten.id"))
 		{
 			//printf("Select returned %d rows.\n", $result->num_rows);
@@ -71,11 +92,14 @@ get_header(); the_post(); ?>
     <span class="ophaalhistoriek-disabled">kaarsresten</span> (gedesactiveerd want in uw profiel staat dat er bij u geen kaarsresten wordt opgehaald).<br/>
     <?php
             }
-		echo "<p>Ophaalpunt $ophaalpunt_from_db->naam haalt kurk op (<b>$ophaalpunt_from_db->kurk</b>) parafine (<b>$ophaalpunt_from_db->parafine</b>).";
-
         if($ophaalpunt_from_db->attest_nodig == 1)
         {
-            echo "<p>Uw ophaalpunt heeft ".which_frequency($ophaalpunt_from_db->frequentie_attest)." een attest nodig</p>";
+            // START <attesten>:
+            ?>
+            <p>Uw ophaalpunt vraagt attesten op <?php echo which_frequency($ophaalpunt_from_db->frequentie_attest); ?> basis:</p>
+            <?php print_attest_frequency_select($ophaalpunt_from_db->frequentie_attest); ?>
+            <?php
+            // EINDE </attesten>:
         }
         else
             echo "<p>Uw ophaalpunt heeft geen attesten aangevraagd. U kan dit aanpassen in de profielinstellingen</p>";
