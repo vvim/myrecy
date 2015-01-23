@@ -168,5 +168,5 @@ get_header(); the_post(); ?>
 
     </form>
     </div>
-	
+</div>
 <?php get_footer() ?>
