@@ -11,9 +11,21 @@ get_header(); the_post(); ?>
 		require_once("secure/db.php");
 
         // ipv uit de DB te halen (table FREQUENTIE), hier de drie mogelijkheden:
-        $frequentie_maandelijks = 1;
-        $frequentie_trimester = 2;
-        $frequentie_jaarlijks = 3;
+        function which_frequency( $frequency  )
+        {
+            switch($frequency)
+            {
+                case 1:
+                    return "maandelijks";
+                    break;
+                case 2:
+                    return "trimester";
+                    break;
+                case 3:
+                    return "jaarlijks";
+                    break;
+            }
+        }
 
 		// zie http://php.net/manual/en/mysqli.query.php
 		if ($result = $MYRECY_mysqli->query("SELECT ophaalpunten.* FROM wordpress_link, ophaalpunten WHERE wordpress_userid = $user_ID AND ophaalpunt_id = ophaalpunten.id"))
@@ -59,8 +71,15 @@ get_header(); the_post(); ?>
     <span class="ophaalhistoriek-disabled">kaarsresten</span> (gedesactiveerd want in uw profiel staat dat er bij u geen kaarsresten wordt opgehaald).<br/>
     <?php
             }
-		echo "<p>Ophaalpunt $ophaalpunt_from_db->naam haalt kurk op (<b>$ophaalpunt_from_db->kurk</b>) parafine (<b>$ophaalpunt_from_db->parafine</b>)."
-         ?>
+		echo "<p>Ophaalpunt $ophaalpunt_from_db->naam haalt kurk op (<b>$ophaalpunt_from_db->kurk</b>) parafine (<b>$ophaalpunt_from_db->parafine</b>).";
+
+        if($ophaalpunt_from_db->attest_nodig == 1)
+        {
+            echo "<p>Uw ophaalpunt heeft ".which_frequency($ophaalpunt_from_db->frequentie_attest)." een attest nodig</p>";
+        }
+        else
+            echo "<p>Uw ophaalpunt heeft geen attesten aangevraagd. U kan dit aanpassen in de profielinstellingen</p>";
+    ?>
 	</div>
 
 <pre>
