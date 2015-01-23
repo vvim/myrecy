@@ -81,7 +81,7 @@ get_header(); the_post(); ?>
                     }
                     else
                     {
-                       	show_myrecy_message("error", "Geen hoeveelheden opgegeven, stock is niet doorgegeven aan De Vlaspit. De databank gaf volgende foutmelding: ".$MYRECY_mysqli->errno .": ". $MYRECY_mysqli->error."<br />Gelieve even te wachten en opnieuw te proberen. Indien het probleem zich blijft voordoen, contacteer ons voor hulp");
+                       	show_myrecy_message("error", "De hoeveelheden zijn niet doorgegeven aan De Vlaspit. De databank gaf volgende foutmelding: ".$MYRECY_mysqli->errno .": ". $MYRECY_mysqli->error."<br />Gelieve even te wachten en opnieuw te proberen. Indien het probleem zich blijft voordoen, contacteer ons voor hulp");
                         exit;
 
                     }
