@@ -29,11 +29,15 @@ get_header(); the_post(); ?>
 
         function print_attest_frequency_select( $frequency )
         {
+            //// TODO: select MaxDate / MinDate of Ophaalhistoriek for this ophaalpunt: http://stackoverflow.com/questions/8727936/mysql-get-mindate-and-maxdate-in-one-query
+            
             // solution to date intervals by @elviejo : http://stackoverflow.com/a/1449514/707700
             $startDate = strtotime("01 Sept 2010");
             $endDate = time(); // "now"
 
             $currentDate = $endDate;
+
+            echo "<select onchange=\"showUser(this.value)\">\n";
 
             switch ($frequency)
             {
@@ -43,11 +47,10 @@ get_header(); the_post(); ?>
 
                     while ($currentDate >= $startDate)
                     {
-                        //echo date('M Y',$currentDate) . "<br/>";
-                        echo strftime($representation,$currentDate). "<br/>";
+                        echo "                <option value=\"".$currentDate."\">".strftime($representation,$currentDate) . "</option>\n";
                         $currentDate = strtotime( date('Y/m/01/',$currentDate).$interval);
                     }
-                    
+
                     break;
 
                 case 2:
@@ -57,8 +60,7 @@ get_header(); the_post(); ?>
 
                     while ($currentDate >= $startDate)
                     {
-                        //echo date('M Y',$currentDate) . "<br/>";
-                        echo quarter($currentDate). "e trimester ". strftime($representation,$currentDate) ."<br/>";
+                        echo "                <option value=\"".$currentDate."\">".quarter($currentDate). "e trimester ". strftime($representation,$currentDate) . "</option>\n";
                         $currentDate = strtotime( date('Y/m/01/',$currentDate).$interval);
                     }
                     
@@ -70,14 +72,14 @@ get_header(); the_post(); ?>
 
                     while ($currentDate >= $startDate)
                     {
-                        //echo date('M Y',$currentDate) . "<br/>";
-                        echo strftime($representation,$currentDate) . "<br/>";
+                        echo "                <option value=\"".$currentDate."\">".strftime($representation,$currentDate) . "</option>\n";
                         $currentDate = strtotime( date('Y/m/01/',$currentDate).$interval);
                     }
 
                     break;
             }
 
+            echo "            </select>\n";
 
         }
 
@@ -104,7 +106,64 @@ get_header(); the_post(); ?>
 			exit;
 		}
 	?>
-    <h3>Materiaal</h3>
+    <script>
+        function showUser(str) {
+            materiaal = "kurk";
+            if (str == "") {
+                document.getElementById("txtHint").innerHTML = "";
+                return;
+            } else { 
+                if (window.XMLHttpRequest) {
+                    // code for IE7+, Firefox, Chrome, Opera, Safari
+                    xmlhttp = new XMLHttpRequest();
+                } else {
+                    // code for IE6, IE5
+                    xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+                }
+                xmlhttp.onreadystatechange = function() {
+                    if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+                        document.getElementById("txtHint").innerHTML = xmlhttp.responseText;
+                    }
+                }
+                xmlhttp.open("GET","gethistoriek/?q="+str+"&materiaal="+materiaal,true);
+                xmlhttp.send();
+            }
+        }
+    </script>
+    <table class="form-table-myrecy">
+        <tr>
+            <?php
+                    if($ophaalpunt_from_db->kurk == 1)
+                    { ?>
+            <th>kurk</th>
+            <?php
+                    }
+                    if($ophaalpunt_from_db->parafine == 1)
+                    { ?>
+            <th>kaarsresten</th>
+            <?php
+                    } ?>
+        </tr>
+        <tr>
+            <?php
+                    if($ophaalpunt_from_db->kurk == 1)
+                    { ?>
+            <td><form><input type="hidden" value="kurk">
+            <?php
+                        // startdatum en einddatum nog bepalen!
+                        print_attest_frequency_select( $ophaalpunt_from_db->frequentie_attest);
+                        echo "            </form></td>\n";
+                    }
+                    if($ophaalpunt_from_db->parafine == 1)
+                    { ?>
+            <td><form><input type="hidden" value="kaarsresten">
+            <?php
+                        // startdatum en einddatum nog bepalen!
+                        print_attest_frequency_select( $ophaalpunt_from_db->frequentie_attest);
+                        echo "            </form></td>\n";
+                    } ?>
+        </tr>
+    </table>
     <?php
             if($ophaalpunt_from_db->kurk == 1)
             { ?>
@@ -179,5 +238,6 @@ frequentie_attest
 			}
 		}
 ?>
-</div>
+<br>
+<div id="txtHint"><b>De ophaalhistoriek zal hier verschijnen...</b></div></div>
 <?php get_footer() ?>
