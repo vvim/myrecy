@@ -113,7 +113,7 @@ get_header(); the_post(); ?>
             }
             else
             { ?>
-    <input class="ophaalhistoriek-disabled" type="checkbox" name="toon_kurk" value="0" disabled > kurk </input> (gedesactiveerd want in uw profiel staat dat er bij u geen kurk wordt opgehaald).<br/>
+    <span class="ophaalhistoriek-disabled">kurk</span> (gedesactiveerd want in uw profiel staat dat er bij u geen kurk wordt opgehaald).<br/>
     <?php
             }
             if($ophaalpunt_from_db->parafine == 1)
