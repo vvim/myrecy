@@ -27,22 +27,13 @@ function show_myrecy_message($style, $message)
    }
 }
 
-// as taken from 'elviejo' at http://stackoverflow.com/questions/1449167/list-of-all-months-and-year-between-two-dates-in-php
-function GetMonthsFromDate($myDate)
-{
-  $year = (int) date('Y',$myDate);
-  $months = (int) date('m', $myDate);
-  $dateAsMonths = 12*$year + $months;
-  return $dateAsMonths;
+/**
+ * Return the quarter for a timestamp.
+ * @returns integer
+ * 
+ * as taken from http://www.avoid.org/php-determine-the-quarter-for-a-timestamp/
+ */
+function quarter($ts) {
+   return ceil(date('n', $ts)/3);
 }
-
-// as taken from 'elviejo' at http://stackoverflow.com/questions/1449167/list-of-all-months-and-year-between-two-dates-in-php
-function GetDateFromMonths($months)
-{
-  $years = (int) $months / 12;
-  $month = (int) $months % 12;
-  $myDate = strtotime("$years/$month/01"); //makes a date like 2009/12/01
-  return $myDate;
-}
-
 ?>

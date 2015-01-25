@@ -29,22 +29,56 @@ get_header(); the_post(); ?>
 
         function print_attest_frequency_select( $frequency )
         {
+            // solution to date intervals by @elviejo : http://stackoverflow.com/a/1449514/707700
+            $startDate = strtotime("01 Sept 2010");
+            $endDate = time(); // "now"
+
+            $currentDate = $endDate;
+
             switch ($frequency)
             {
                 case 1:
-                    //"maandelijks"; taken from 'FractalizeR' at http://stackoverflow.com/questions/1449167/list-of-all-months-and-year-between-two-dates-in-php
-                    for ($i = GetMonthsFromDate($StartDate), $i <= GetMonthsFromDate($StopDate), $i++)
+                    $interval = " -1 month"; // montly
+                    $representation = '%b %Y';
+
+                    while ($currentDate >= $startDate)
                     {
-                        echo(GetDateFromMonths($i));
+                        //echo date('M Y',$currentDate) . "<br/>";
+                        echo strftime($representation,$currentDate). "<br/>";
+                        $currentDate = strtotime( date('Y/m/01/',$currentDate).$interval);
                     }
+                    
                     break;
+
                 case 2:
-                    return "trimester";
+                    $interval = " -3 months"; // quarterly
+                    // maybe interesting: http://stackoverflow.com/questions/21185924/get-startdate-and-enddate-for-current-quarter-php
+                    $representation = '%Y';
+
+                    while ($currentDate >= $startDate)
+                    {
+                        //echo date('M Y',$currentDate) . "<br/>";
+                        echo quarter($currentDate). "e trimester ". strftime($representation,$currentDate) ."<br/>";
+                        $currentDate = strtotime( date('Y/m/01/',$currentDate).$interval);
+                    }
+                    
                     break;
-                case 3:
-                    return "jaarlijks";
+                
+                default:
+                    $interval = " -1 year"; // yearly
+                    $representation = '%Y';
+
+                    while ($currentDate >= $startDate)
+                    {
+                        //echo date('M Y',$currentDate) . "<br/>";
+                        echo strftime($representation,$currentDate) . "<br/>";
+                        $currentDate = strtotime( date('Y/m/01/',$currentDate).$interval);
+                    }
+
                     break;
             }
+
+
         }
 
 
