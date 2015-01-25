@@ -179,5 +179,5 @@ frequentie_attest
 			}
 		}
 ?>
-	
+</div>
 <?php get_footer() ?>
