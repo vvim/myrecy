@@ -9,7 +9,7 @@ get_header(); the_post(); ?>
 	<div class="content">
 	<?php
 		require_once("secure/db.php");
-
+/*
         // ipv uit de DB te halen (table FREQUENTIE), hier de drie mogelijkheden:
         function which_frequency( $frequency  )
         {
@@ -19,29 +19,35 @@ get_header(); the_post(); ?>
                     return "maandelijks";
                     break;
                 case 2:
-                    return "trimester";
+                    return "kwartaal";
                     break;
-                case 3:
+                default:
                     return "jaarlijks";
                     break;
             }
         }
-
-        function print_attest_frequency_select( $frequency )
+*/
+        function print_attest_frequency_select( $frequency, $materiaal )
         {
             //// TODO: select MaxDate / MinDate of Ophaalhistoriek for this ophaalpunt: http://stackoverflow.com/questions/8727936/mysql-get-mindate-and-maxdate-in-one-query
             
+            
+            /***
+                Wim: select mindate(ophaaldatum), maxdate(ophaaldatum) from ophaalhistoriek where ophaalpunt = x;
+                        => $startDate = strtotime( MINDATE );
+                        => $endDate =  strtotime( MAXDATE );
+            **/
             // solution to date intervals by @elviejo : http://stackoverflow.com/a/1449514/707700
             $startDate = strtotime("01 Sept 2010");
             $endDate = time(); // "now"
 
-            $currentDate = $endDate;
-
-            echo "<select onchange=\"showUser(this.value)\">\n";
+            echo "<select onchange=\"showUser(this.value,this.name)\" name=\"$materiaal\">\n";
+            echo "                <option></option>\n";
 
             switch ($frequency)
             {
                 case 1:
+                    $currentDate = strtotime( date('Y/m/01/',$endDate));
                     $interval = " -1 month"; // montly
                     $representation = '%b %Y';
 
@@ -54,26 +60,28 @@ get_header(); the_post(); ?>
                     break;
 
                 case 2:
+                    $currentDate = strtotime( date('Y/m/01/',$endDate)); // --> DEZE KLOPT NIET , zie code gethistoriek for testing
                     $interval = " -3 months"; // quarterly
                     // maybe interesting: http://stackoverflow.com/questions/21185924/get-startdate-and-enddate-for-current-quarter-php
                     $representation = '%Y';
 
                     while ($currentDate >= $startDate)
                     {
-                        echo "                <option value=\"".$currentDate."\">".quarter($currentDate). "e trimester ". strftime($representation,$currentDate) . "</option>\n";
+                        echo "                <option value=\"".$currentDate."\">".quarter($currentDate). "e kwartaal ". strftime($representation,$currentDate) . "</option>\n";
                         $currentDate = strtotime( date('Y/m/01/',$currentDate).$interval);
                     }
                     
                     break;
                 
                 default:
+                    $currentDate = strtotime( date('Y/01/01/',$endDate));
                     $interval = " -1 year"; // yearly
                     $representation = '%Y';
 
                     while ($currentDate >= $startDate)
                     {
                         echo "                <option value=\"".$currentDate."\">".strftime($representation,$currentDate) . "</option>\n";
-                        $currentDate = strtotime( date('Y/m/01/',$currentDate).$interval);
+                        $currentDate = strtotime( date('Y/01/01/',$currentDate).$interval);
                     }
 
                     break;
@@ -107,9 +115,8 @@ get_header(); the_post(); ?>
 		}
 	?>
     <script>
-        function showUser(str) {
-            materiaal = "kurk";
-            if (str == "") {
+        function showUser(str,materiaal) {
+            if ((str == "")||(materiaal == "")) {
                 document.getElementById("txtHint").innerHTML = "";
                 return;
             } else { 
@@ -125,7 +132,7 @@ get_header(); the_post(); ?>
                         document.getElementById("txtHint").innerHTML = xmlhttp.responseText;
                     }
                 }
-                xmlhttp.open("GET","gethistoriek/?q="+str+"&materiaal="+materiaal,true);
+                xmlhttp.open("GET","gethistoriek/?q="+str+"&materiaal="+materiaal+"&frequentie="+<?php echo $ophaalpunt_from_db->frequentie_attest; ?>,true);
                 xmlhttp.send();
             }
         }
@@ -151,7 +158,7 @@ get_header(); the_post(); ?>
             <td><form><input type="hidden" value="kurk">
             <?php
                         // startdatum en einddatum nog bepalen!
-                        print_attest_frequency_select( $ophaalpunt_from_db->frequentie_attest);
+                        print_attest_frequency_select( $ophaalpunt_from_db->frequentie_attest, "kurk");
                         echo "            </form></td>\n";
                     }
                     if($ophaalpunt_from_db->parafine == 1)
@@ -159,85 +166,14 @@ get_header(); the_post(); ?>
             <td><form><input type="hidden" value="kaarsresten">
             <?php
                         // startdatum en einddatum nog bepalen!
-                        print_attest_frequency_select( $ophaalpunt_from_db->frequentie_attest);
+                        print_attest_frequency_select( $ophaalpunt_from_db->frequentie_attest, "kaarsresten");
                         echo "            </form></td>\n";
                     } ?>
         </tr>
     </table>
-    <?php
-            if($ophaalpunt_from_db->kurk == 1)
-            { ?>
-    <input type="checkbox" name="toon_kurk" value="1" > kurk<br/>
-    <?php
-            }
-            else
-            { ?>
-    <span class="ophaalhistoriek-disabled">kurk</span> (gedesactiveerd want in uw profiel staat dat er bij u geen kurk wordt opgehaald).<br/>
-    <?php
-            }
-            if($ophaalpunt_from_db->parafine == 1)
-            { ?>
-    <input type="checkbox" name="toon_kaarsresten" value="1" > kaarsresten<br/>
-    <?php
-            }
-            else
-            { ?>
-    <span class="ophaalhistoriek-disabled">kaarsresten</span> (gedesactiveerd want in uw profiel staat dat er bij u geen kaarsresten wordt opgehaald).<br/>
-    <?php
-            }
-        if($ophaalpunt_from_db->attest_nodig == 1)
-        {
-            // START <attesten>:
-            ?>
-            <p>Uw ophaalpunt vraagt attesten op <?php echo which_frequency($ophaalpunt_from_db->frequentie_attest); ?> basis:</p>
-            <?php print_attest_frequency_select($ophaalpunt_from_db->frequentie_attest); ?>
-            <?php
-            // EINDE </attesten>:
-        }
-        else
-            echo "<p>Uw ophaalpunt heeft geen attesten aangevraagd. U kan dit aanpassen in de profielinstellingen</p>";
-    ?>
+    
+    <div id="txtHint"><strong>De ophaalhistoriek zal hier verschijnen...</strong></div></div>
+
 	</div>
-
-<pre>
-(eerste ophaling ooit volgens db: september 2010)
-
-attest_nodig
-frequentie_attest
-
- ** if attest_nodig AND frequentie == MAANDELIJKS
- => voorstellen per maand
- ** if attest_nodig AND frequentie == TRIMESTER
- => voorstellen per maand
- ** if attest_nodig AND frequentie == JAARLIJKS
- => voorstellen per maand
-
-// eventueel ook een termijn à la routetool geven?
-
-// resultaten tonen met AJAX zoals in BH
-</pre>
-
-<?php
-// 
-		if ($result = $MYRECY_mysqli->query("SELECT ophalinghistoriek.* FROM ophalinghistoriek, wordpress_link WHERE ophalinghistoriek.ophaalpunt = wordpress_link.ophaalpunt_id AND wordpress_link.wordpress_userid = $user_ID"))
-		{
-			//printf("Select returned %d rows.\n", $result->num_rows);
-			if($result->num_rows < 1)
-			{
-				// no results found, so why even bother? quit! + show error message for users to contact adminstration
-				show_myrecy_message("error", "Geen ophaalhistoriek gelinkt aan je gebruikersnaam, contacteer ons voor hulp.");
-				$result->close();
-				//exit;
-			}
-			else
-			{
-			    // if kurk_zakken <> 0 OR kurk_kg <> 0 then add row to KURK
-			    // if kaars_zakken <> 0 OR kaars_kg <> 0 then add row to KAARS
-				$ophaalpunt_from_db = $result->fetch_object();
-				$result->close();
-			}
-		}
-?>
 <br>
-<div id="txtHint"><b>De ophaalhistoriek zal hier verschijnen...</b></div></div>
 <?php get_footer() ?>
