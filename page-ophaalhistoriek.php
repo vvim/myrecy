@@ -30,58 +30,97 @@ get_header(); the_post(); ?>
         function print_attest_frequency_select( $frequency, $materiaal )
         {
             //// TODO: select MaxDate / MinDate of Ophaalhistoriek for this ophaalpunt: http://stackoverflow.com/questions/8727936/mysql-get-mindate-and-maxdate-in-one-query
+            if (($materiaal != "kurk") && ($materiaal != "kaarsresten"))
+            {
+                echo "<!-- [vvim][DEBUG][page-ophaalhistoriek::print_attest_frequency_select()] wrong material: ".htmlspecialchars($materiaal)." , exit function -->\n";
+                return;
+            }
+
+            // for some reason, requiring db.php once outside of the function call, does not count?
+            // require("secure/db.php"); --> not needed: https://wordpress.org/support/topic/global-variables-not-working
+
+            global $user_ID;
+            global $MYRECY_mysqli;
+
+            $result = $MYRECY_mysqli->query("SELECT min(ophalinghistoriek.ophalingsdatum),  max(ophalinghistoriek.ophalingsdatum) FROM wordpress_link, ophalinghistoriek WHERE wordpress_userid = $user_ID AND ophaalpunt_id = ophalinghistoriek.ophaalpunt");
             
-            
-            /***
-                Wim: select mindate(ophaaldatum), maxdate(ophaaldatum) from ophaalhistoriek where ophaalpunt = x;
-                        => $startDate = strtotime( MINDATE );
-                        => $endDate =  strtotime( MAXDATE );
-            **/
+            if (!$result)
+            {
+                echo "<!-- [vvim][DEBUG][page-ophaalhistoriek::print_attest_frequency_select()] no DB connection: ".$MYRECY_mysqli->error." , exit function -->\n";
+                return;
+            }
+
+            //printf("Select returned %d rows.\n", $result->num_rows);
+            if($result->num_rows < 1)
+            {
+                // no results found, so why even bother? quit! + show error message for users to contact adminstration
+                echo "geen historiek voor ".$materiaal."\n";
+                return;
+            }
+
             // solution to date intervals by @elviejo : http://stackoverflow.com/a/1449514/707700
+
+            $row = $result->fetch_row();
+            $startDate = strtotime($row[0]);
+            $endDate = strtotime($row[1]);
+
+/*
             $startDate = strtotime("01 Sept 2010");
             $endDate = time(); // "now"
-
+*/
             echo "<select onchange=\"showUser(this.value,this.name)\" name=\"$materiaal\">\n";
             echo "                <option></option>\n";
 
             switch ($frequency)
             {
                 case 1:
-                    $currentDate = strtotime( date('Y/m/01/',$endDate));
+                    $currentDate = $endDate;
+                    $startDate = strtotime( date('Y/m/01',$startDate));
                     $interval = " -1 month"; // montly
                     $representation = '%b %Y';
 
                     while ($currentDate >= $startDate)
                     {
+                        echo "\n";
+                        echo "<!-- [vvim] currentdate:".date('Y/m/d',$currentDate)." >= ".date('Y/m/d',$startDate)."-->";
+                        echo "\n";
                         echo "                <option value=\"".$currentDate."\">".strftime($representation,$currentDate) . "</option>\n";
-                        $currentDate = strtotime( date('Y/m/01/',$currentDate).$interval);
+                        $currentDate = strtotime( date('Y/m/d',$currentDate).$interval);
                     }
 
                     break;
 
                 case 2:
-                    $currentDate = strtotime( date('Y/m/01/',$endDate)); // --> DEZE KLOPT NIET , zie code gethistoriek for testing
+                    $currentDate = $endDate; // --> DEZE KLOPT NIET , zie code gethistoriek for testing
+                    $startDate = strtotime( date('Y/m/01',$startDate));
                     $interval = " -3 months"; // quarterly
                     // maybe interesting: http://stackoverflow.com/questions/21185924/get-startdate-and-enddate-for-current-quarter-php
                     $representation = '%Y';
 
                     while ($currentDate >= $startDate)
                     {
+                        echo "\n";
+                        echo "<!-- [vvim] currentdate:".date('Y/m/d',$currentDate)." >= ".date('Y/m/d',$startDate)."-->";
+                        echo "\n";
                         echo "                <option value=\"".$currentDate."\">".quarter($currentDate). "e kwartaal ". strftime($representation,$currentDate) . "</option>\n";
-                        $currentDate = strtotime( date('Y/m/01/',$currentDate).$interval);
+                        $currentDate = strtotime( date('Y/m/d',$currentDate).$interval);
                     }
                     
                     break;
                 
                 default:
-                    $currentDate = strtotime( date('Y/01/01/',$endDate));
+                    $currentDate = $endDate;
+                    $startDate = strtotime( date('Y/01/01',$startDate));
                     $interval = " -1 year"; // yearly
                     $representation = '%Y';
 
                     while ($currentDate >= $startDate)
                     {
+                        echo "\n";
+                        echo "<!-- [vvim] currentdate:".date('Y/m/d',$currentDate)." >= ".date('Y/m/d',$startDate)."-->";
+                        echo "\n";
                         echo "                <option value=\"".$currentDate."\">".strftime($representation,$currentDate) . "</option>\n";
-                        $currentDate = strtotime( date('Y/01/01/',$currentDate).$interval);
+                        $currentDate = strtotime( date('Y/m/d',$currentDate).$interval);
                     }
 
                     break;
