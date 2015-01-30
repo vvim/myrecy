@@ -66,10 +66,11 @@ th {text-align: left;}
         {
             case 1:
                 // "maandelijks";
+                $representation = '%B %Y';
                 $startDate = date("Y-m-01",$timestamp);
                 $interval = " + 1 month";
                 $endDate = date("Y-m-01",strtotime( $startDate.$interval));
-                return array(strtotime($startDate), strtotime($endDate), date("M Y",$timestamp));
+                return array(strtotime($startDate), strtotime($endDate), strftime($representation,$timestamp));
                 break;
             case 2:
                 // "kwartaal";
@@ -77,10 +78,11 @@ th {text-align: left;}
                 break;
             default:
                 // "jaarlijks";
+                $representation = '%Y';
                 $startDate = date("Y-01-01",$timestamp);
                 $interval = " + 1 year";
                 $endDate = date("Y-m-d",strtotime( $startDate.$interval));
-                return array(strtotime($startDate), strtotime($endDate), date("Y",$timestamp));
+                return array(strtotime($startDate), strtotime($endDate), strftime($representation,$timestamp));
                 break;
         }
     }
