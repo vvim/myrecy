@@ -42,7 +42,7 @@ get_header(); the_post(); ?>
             global $user_ID;
             global $MYRECY_mysqli;
 
-            $result = $MYRECY_mysqli->query("SELECT min(ophalinghistoriek.ophalingsdatum),  max(ophalinghistoriek.ophalingsdatum) FROM wordpress_link, ophalinghistoriek WHERE wordpress_userid = $user_ID AND ophaalpunt_id = ophalinghistoriek.ophaalpunt");
+            $result = $MYRECY_mysqli->query("SELECT min(ophalinghistoriek.ophalingsdatum),  max(ophalinghistoriek.ophalingsdatum) FROM wordpress_link, ophalinghistoriek WHERE wordpress_userid = $user_ID AND ophaalpunt_id = ophalinghistoriek.ophaalpunt AND (kg_$materiaal > 0 OR zakken_$materiaal > 0)");
             
             if (!$result)
             {
@@ -53,16 +53,23 @@ get_header(); the_post(); ?>
             //printf("Select returned %d rows.\n", $result->num_rows);
             if($result->num_rows < 1)
             {
-                // no results found, so why even bother? quit! + show error message for users to contact adminstration
+                // normally we would never get here, if there is no collectionhistory, the min() and max() will return NULL
+                echo "geen historiek voor ".$materiaal."\n";
+                return;
+            }
+
+            $row = $result->fetch_row();
+            if($row[0] == null)
+            {
+                // better than checking for num_rows < 1 , see comment above
                 echo "geen historiek voor ".$materiaal."\n";
                 return;
             }
 
             // solution to date intervals by @elviejo : http://stackoverflow.com/a/1449514/707700
-
-            $row = $result->fetch_row();
             $startDate = strtotime($row[0]);
             $endDate = strtotime($row[1]);
+
 
 /*
             $startDate = strtotime("01 Sept 2010");
