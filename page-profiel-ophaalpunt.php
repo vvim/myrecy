@@ -200,7 +200,7 @@ get_header(); the_post(); ?>
 			<td><input type="text" name="email2" id="email2" value="<?php echo htmlspecialchars($ophaalpunt_from_db->email2); ?>" class="regular-text" /></td>
 		</tr>
 		<tr>
-			<th><label for="preferredcontact">Bijvoorkeur te contacteren per</label></th>
+			<th><label for="preferredcontact">Bij voorkeur te contacteren per</label></th>
 			<td>
 				<select name="preferredcontact" id="preferredcontact"><?php
 				    		if ($result = $MYRECY_mysqli->query("SELECT * FROM contacteren"))
