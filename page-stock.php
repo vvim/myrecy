@@ -37,7 +37,7 @@ get_header(); the_post(); ?>
                 if($result->num_rows < 1)
                 {
                     // no results found, so why even bother? quit! + show error message for users to contact adminstration
-                    show_myrecy_message("error", "Geen ophaalpunt gevonden dat overeenkomt met uw gebruikersnaam, stock is niet doorgegeven aan De Vlaspit. Gelieve even te wachten en opnieuw te proberen. Indien het probleem zich blijft voordoen, contacteer ons voor hulp.");
+                    show_myrecy_message("error", _("Geen ophaalpunt gevonden dat overeenkomt met uw gebruikersnaam, stock is niet doorgegeven aan De Vlaspit. Gelieve even te wachten en opnieuw te proberen. Indien het probleem zich blijft voordoen, contacteer ons voor hulp."));
                     $result->close();
                     exit;
                 }
@@ -76,12 +76,12 @@ get_header(); the_post(); ?>
 
                     if($statement->execute())
                     {
-                      	show_myrecy_message("good","Hoeveelheden zijn doorgegeven aan De Vlaspit: ".$zakken_kurk." zakken kurk en ".$zakken_kaarsresten." zakken kaarsresten.");
+                      	show_myrecy_message("good",sprintf(_("Hoeveelheden zijn doorgegeven aan De Vlaspit: %d zakken kurk en %d zakken kaarsresten."),$zakken_kurk,$zakken_kaarsresten));
                         // ID of last inserted record is : ' .$statement->insert_id ';
                     }
                     else
                     {
-                       	show_myrecy_message("error", "De hoeveelheden zijn niet doorgegeven aan De Vlaspit. De databank gaf volgende foutmelding: ".$MYRECY_mysqli->errno .": ". $MYRECY_mysqli->error."<br />Gelieve even te wachten en opnieuw te proberen. Indien het probleem zich blijft voordoen, contacteer ons voor hulp");
+                       	show_myrecy_message("error", _("De hoeveelheden zijn niet doorgegeven aan De Vlaspit. De databank gaf volgende foutmelding: ".$MYRECY_mysqli->errno .": ". $MYRECY_mysqli->error."<br />Gelieve even te wachten en opnieuw te proberen. Indien het probleem zich blijft voordoen, contacteer ons voor hulp"));
                         exit;
 
                     }
@@ -92,12 +92,12 @@ get_header(); the_post(); ?>
         	}
         	else
         	{
-            	    show_myrecy_message("error","Geen hoeveelheden opgegeven, stock is niet doorgegeven aan De Vlaspit.");
+            	    show_myrecy_message("error",_("Geen hoeveelheden opgegeven, stock is niet doorgegeven aan De Vlaspit."));
             	}
     	    }
     	    else
     	    {
-        	    show_myrecy_message("error","Geen verbinding kunnen maken met de databank, de hoeveelheden zijn niet doorgegeven aan De Vlaspit.  Gelieve even te wachten en opnieuw te proberen. Indien het probleem zich blijft voordoen, contacteer ons voor hulp.");
+        	    show_myrecy_message("error",_("Geen verbinding kunnen maken met de databank, de hoeveelheden zijn niet doorgegeven aan De Vlaspit.  Gelieve even te wachten en opnieuw te proberen. Indien het probleem zich blijft voordoen, contacteer ons voor hulp."));
         	}
     	}
 
@@ -122,14 +122,14 @@ get_header(); the_post(); ?>
                 $opmerkingen_form = str_replace($handtekening,"",$vorige_aanmelding->opmerkingen); // haal de $handtekening uit de opmerkingen
                 $datum = $vorige_aanmelding->datum;
                 $contactpersoon = $vorige_aanmelding->contactpersoon;
-                show_myrecy_message("info", "Op ".strftime("%e %B %Y",strtotime($datum))." heeft u ".$zakken_kurk." zakken kurk en ".$zakken_kaarsresten." zakken kaarsresten aangemeld, maar deze zijn nog niet opgehaald. Wilt u deze aantallen aanpassen?");
+                show_myrecy_message("info", sprintf(_("Op %s heeft u %d zakken kurk en %d zakken kaarsresten aangemeld, maar deze zijn nog niet opgehaald. Wilt u deze aantallen aanpassen?"),strftime("%e %B %Y",strtotime($datum)),$zakken_kurk,$zakken_kaarsresten));
                 $result->close();
             }
         }
         else
         {
             // could not query DB, so why even bother? quit! + show error message for users to contact adminstration
-            show_myrecy_message("error", "De MyRecy-databank is momenteel niet bereikbaar, gelieve even te wachten en opnieuw te proberen. Indien het probleem zich blijft voordoen, contacteer ons voor hulp.");
+            show_myrecy_message("error", _("De MyRecy-databank is momenteel niet bereikbaar, gelieve even te wachten en opnieuw te proberen. Indien het probleem zich blijft voordoen, contacteer ons voor hulp."));
             exit;
         }
 
@@ -145,26 +145,26 @@ get_header(); the_post(); ?>
     <input type="hidden" id="aanmelding_id" name="aanmelding_id" value="<?php echo $aanmelding_id; ?>" />
 
 
-    <h3>Momenteel heeft ons ophaalpunt het volgende in stock</h3>
+    <h3><?php echo _("Momenteel heeft ons ophaalpunt het volgende in stock");?></h3>
 
     <table class="form-table-myrecy">
 		<tr>
-			<th>Kurk</th>
-			<td><input class="number-input-slim" type="number" value="<?php echo /* check if is empty => '0'*/ $zakken_kurk; ?>" min="0" name="zakken_kurk" id="zakken_kurk" /> zakken</td>
-			<td><input class="number-input-slim" type="number" value="<?php echo $kg_kurk; ?>" min="0" name="kg_kurk" id="kg_kurk" /> kilogram</td>
+			<th><?php echo _("Kurk");?></th>
+			<td><input class="number-input-slim" type="number" value="<?php echo /* check if is empty => '0'*/ $zakken_kurk; ?>" min="0" name="zakken_kurk" id="zakken_kurk" /> <?php echo _("zakken");?></td>
+			<td><input class="number-input-slim" type="number" value="<?php echo $kg_kurk; ?>" min="0" name="kg_kurk" id="kg_kurk" /> <?php echo _("kilogram");?></td>
 		</tr>
 		<tr>
-			<th>Kaarsresten</th>
-			<td><input class="number-input-slim" type="number" value="<?php echo $zakken_kaarsresten; ?>" min="0" name="zakken_kaarsresten" id="zakken_kaarsresten" /> zakken</td>
-			<td><input class="number-input-slim" type="number" value="<?php echo $kg_kaarsresten; ?>" min="0" name="kg_kaarsresten" id="kg_kaarsresten" /> kilogram</td>
+			<th><?php echo _("Kaarsresten");?></th>
+			<td><input class="number-input-slim" type="number" value="<?php echo $zakken_kaarsresten; ?>" min="0" name="zakken_kaarsresten" id="zakken_kaarsresten" /> <?php echo _("zakken");?></td>
+			<td><input class="number-input-slim" type="number" value="<?php echo $kg_kaarsresten; ?>" min="0" name="kg_kaarsresten" id="kg_kaarsresten" /> <?php echo _("kilogram");?></td>
 		</tr>
 		<tr>
-			<th><label for="opmerkingen">Opmerkingen</label></th>
+			<th><label for="opmerkingen"><?php echo _("Opmerkingen");?></label></th>
 			<td colspan="2"><textarea name="opmerkingen" id="opmerkingen" rows="5" cols="30"><?php /* to strip the MyRecy remark to avoid dubbels, thank you! */  echo htmlspecialchars($opmerkingen_form); ?></textarea></td>
 		</tr>
 	</table>
 
-    <input type="submit" value="Stock doorgeven aan De Vlaspit">
+    <input type="submit" value="<?php echo _("Stock doorgeven aan De Vlaspit");?>">
 
     </form>
     </div>

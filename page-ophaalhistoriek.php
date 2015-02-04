@@ -30,7 +30,7 @@ get_header(); the_post(); ?>
         function print_attest_frequency_select( $frequency, $materiaal )
         {
             //// TODO: select MaxDate / MinDate of Ophaalhistoriek for this ophaalpunt: http://stackoverflow.com/questions/8727936/mysql-get-mindate-and-maxdate-in-one-query
-            if (($materiaal != "kurk") && ($materiaal != "kaarsresten"))
+            if (($materiaal != _("kurk")) && ($materiaal != _("kaarsresten")))
             {
                 echo "<!-- [vvim][DEBUG][page-ophaalhistoriek::print_attest_frequency_select()] wrong material: ".htmlspecialchars($materiaal)." , exit function -->\n";
                 return;
@@ -54,7 +54,7 @@ get_header(); the_post(); ?>
             if($result->num_rows < 1)
             {
                 // normally we would never get here, if there is no collectionhistory, the min() and max() will return NULL
-                echo "geen historiek voor ".$materiaal."\n";
+                echo sprintf(_("geen historiek voor %s\n"),$materiaal);
                 return;
             }
 
@@ -62,7 +62,7 @@ get_header(); the_post(); ?>
             if($row[0] == null)
             {
                 // better than checking for num_rows < 1 , see comment above
-                echo "geen historiek voor ".$materiaal."\n";
+                echo sprintf(_("geen historiek voor %s\n"),$materiaal);
                 return;
             }
 
@@ -109,7 +109,7 @@ get_header(); the_post(); ?>
                         echo "\n";
                         echo "<!-- [vvim] currentdate:".date('Y/m/d',$currentDate)." >= ".date('Y/m/d',$startDate)."-->";
                         echo "\n";
-                        echo "                <option value=\"".$currentDate."\">".quarter($currentDate). "e kwartaal ". strftime($representation,$currentDate) . "</option>\n";
+                        echo "                <option value=\"".$currentDate."\">".sprintf(_("%de kwartaal %s"),quarter($currentDate),strftime($representation,$currentDate))."</option>\n";
                         $currentDate = strtotime( date('Y/m/d',$currentDate).$interval);
                     }
                     
@@ -145,7 +145,7 @@ get_header(); the_post(); ?>
 			if($result->num_rows < 1)
 			{
 				// no results found, so why even bother? quit! + show error message for users to contact adminstration
-				show_myrecy_message("error", "Geen ophaalpunt gelinkt aan je gebruikersnaam, contacteer ons voor hulp.");
+				show_myrecy_message("error", _("Geen ophaalpunt gelinkt aan je gebruikersnaam, contacteer ons voor hulp."));
 				$result->close();
 				exit;
 			}
@@ -156,7 +156,7 @@ get_header(); the_post(); ?>
 		else
 		{
 			// could not query DB, so why even bother? quit! + show error message for users to contact adminstration
-			show_myrecy_message("error", "De MyRecy-databank is momenteel niet bereikbaar, gelieve even te wachten en opnieuw te proberen. Indien het probleem zich blijft voordoen, contacteer ons voor hulp.");
+			show_myrecy_message("error", _("De MyRecy-databank is momenteel niet bereikbaar, gelieve even te wachten en opnieuw te proberen. Indien het probleem zich blijft voordoen, contacteer ons voor hulp."));
 			exit;
 		}
 	?>
@@ -204,7 +204,7 @@ get_header(); the_post(); ?>
             <td><form><input type="hidden" value="kurk">
             <?php
                         // startdatum en einddatum nog bepalen!
-                        print_attest_frequency_select( $ophaalpunt_from_db->frequentie_attest, "kurk");
+                        print_attest_frequency_select( $ophaalpunt_from_db->frequentie_attest, _("kurk"));
                         echo "            </form></td>\n";
                     }
                     if($ophaalpunt_from_db->parafine == 1)
@@ -212,13 +212,13 @@ get_header(); the_post(); ?>
             <td><form><input type="hidden" value="kaarsresten">
             <?php
                         // startdatum en einddatum nog bepalen!
-                        print_attest_frequency_select( $ophaalpunt_from_db->frequentie_attest, "kaarsresten");
+                        print_attest_frequency_select( $ophaalpunt_from_db->frequentie_attest, _("kaarsresten"));
                         echo "            </form></td>\n";
                     } ?>
         </tr>
     </table>
     
-    <div id="txtHint"><strong>De ophaalhistoriek zal hier verschijnen...</strong></div></div>
+    <div id="txtHint"><strong><?php echo _("De ophaalhistoriek zal hier verschijnen..."); ?></strong></div></div>
 
 	</div>
 <br>

@@ -19,7 +19,7 @@ get_header(); the_post(); ?>
                 if($result->num_rows < 1)
                 {
                     // no results found, so why even bother? quit! + show error message for users to contact adminstration
-                    show_myrecy_message("error", "Geen ophaalpunt gelinkt aan je gebruikersnaam, contacteer ons voor hulp.");
+                    show_myrecy_message("error", _("Geen ophaalpunt gelinkt aan je gebruikersnaam, contacteer ons voor hulp."));
                     $result->close();
                     exit;
                 }
@@ -31,7 +31,7 @@ get_header(); the_post(); ?>
             else
             {
                 // could not query DB, so why even bother? quit! + show error message for users to contact adminstration
-                show_myrecy_message("error", "De MyRecy-databank is momenteel niet bereikbaar, gelieve even te wachten en opnieuw te proberen. Indien het probleem zich blijft voordoen, contacteer ons voor hulp.");
+                show_myrecy_message("error", _("De MyRecy-databank is momenteel niet bereikbaar, gelieve even te wachten en opnieuw te proberen. Indien het probleem zich blijft voordoen, contacteer ons voor hulp."));
                 exit;
             }
 
@@ -76,11 +76,11 @@ get_header(); the_post(); ?>
 
                 if($statement->execute())
                 {
-                    show_myrecy_message("good","Wijzigingen in het profiel zijn doorgegeven aan De Vlaspit.");
+                    show_myrecy_message("good",_("Wijzigingen in het profiel zijn doorgegeven aan De Vlaspit."));
                 }
                 else
                 {
-                    show_myrecy_message("error", "De wijzigingen zijn niet doorgegeven aan De Vlaspit. De databank gaf volgende foutmelding: ".$MYRECY_mysqli->errno .": ". $MYRECY_mysqli->error."<br />Gelieve even te wachten en opnieuw te proberen. Indien het probleem zich blijft voordoen, contacteer ons voor hulp");
+                    show_myrecy_message("error", _("De wijzigingen zijn niet doorgegeven aan De Vlaspit. De databank gaf volgende foutmelding: ".$MYRECY_mysqli->errno .": ". $MYRECY_mysqli->error."<br />Gelieve even te wachten en opnieuw te proberen. Indien het probleem zich blijft voordoen, contacteer ons voor hulp"));
                     exit;
                 }
                 $statement->close();
@@ -92,7 +92,7 @@ get_header(); the_post(); ?>
                     if($result->num_rows < 1)
                     {
                         // no results found, so why even bother? quit! + show error message for users to contact adminstration
-                        show_myrecy_message("error", "Geen ophaalpunt gelinkt aan je gebruikersnaam, contacteer ons voor hulp.");
+                        show_myrecy_message("error", _("Geen ophaalpunt gelinkt aan je gebruikersnaam, contacteer ons voor hulp."));
                         $result->close();
                         exit;
                     }
@@ -104,7 +104,7 @@ get_header(); the_post(); ?>
                 else
                 {
                     // could not query DB, so why even bother? quit! + show error message for users to contact adminstration
-                    show_myrecy_message("error", "De MyRecy-databank is momenteel niet bereikbaar, gelieve even te wachten en opnieuw te proberen. Indien het probleem zich blijft voordoen, contacteer ons voor hulp.");
+                    show_myrecy_message("error", _("De MyRecy-databank is momenteel niet bereikbaar, gelieve even te wachten en opnieuw te proberen. Indien het probleem zich blijft voordoen, contacteer ons voor hulp."));
                     exit;
                 }
 
@@ -114,49 +114,49 @@ get_header(); the_post(); ?>
 		?>
 
 	<form action="<?php echo $_SERVER['REQUEST_URI']; ?>" method="post">
-		<h3>Adres ophaalpunt</h3>
+		<h3><?php echo _("Adres ophaalpunt"); ?></h3>
 		<table class="form-table-myrecy">
 		<tr>
-			<th><label for="naam_ophaalpunt">Naam ophaalpunt</label></th>
+			<th><label for="naam_ophaalpunt"><?php echo _("Naam ophaalpunt"); ?></label></th>
 			<td><input type="text" name="naam_ophaalpunt" id="naam_ophaalpunt" value="<?php echo htmlspecialchars($ophaalpunt_from_db->naam); ?>" class="regular-text" /></td>
 		</tr>
 		<tr>
-			<th><label for="straat_ophaalpunt">Straat</label></th>
+			<th><label for="straat_ophaalpunt"><?php echo _("Straat"); ?></label></th>
 			<td><input type="text" name="straat_ophaalpunt" id="straat_ophaalpunt" value="<?php echo htmlspecialchars($ophaalpunt_from_db->straat); ?>" class="regular-text" /></td>
 		</tr>
 		<tr>
-			<th><label for="huisnr_ophaalpunt">Huisnummer</label></th>
+			<th><label for="huisnr_ophaalpunt"><?php echo _("Huisnummer"); ?></label></th>
 			<td><input type="text" name="huisnr_ophaalpunt" id="huisnr_ophaalpunt" value="<?php echo htmlspecialchars($ophaalpunt_from_db->nr); ?>" class="regular-text" /></td>
 		</tr>
 		<tr>
-			<th><label for="bus_ophaalpunt">Bus</label></th>
+			<th><label for="bus_ophaalpunt"><?php echo _("Bus"); ?></label></th>
 			<td><input type="text" name="bus_ophaalpunt" id="bus_ophaalpunt" value="<?php echo htmlspecialchars($ophaalpunt_from_db->bus); ?>" class="regular-text" /></td>
 		</tr>
 		<tr>
-			<th><label for="postcode_ophaalpunt">Postcode</label></th>
+			<th><label for="postcode_ophaalpunt"><?php echo _("Postcode"); ?></label></th>
 			<td><input type="text" name="postcode_ophaalpunt" id="postcode_ophaalpunt" value="<?php echo htmlspecialchars($ophaalpunt_from_db->postcode); ?>" class="regular-text" /></td>
 		</tr>
 		<tr>
-			<th><label for="plaats_ophaalpunt">Plaats</label></th>
+			<th><label for="plaats_ophaalpunt"><?php echo _("Plaats"); ?></label></th>
 			<td><input type="text" name="plaats_ophaalpunt" id="plaats_ophaalpunt" value="<?php echo htmlspecialchars($ophaalpunt_from_db->plaats); ?>" class="regular-text" /></td>
 		</tr>
 		<tr>
-			<th><label for="land_ophaalpunt">Land</label></th>
+			<th><label for="land_ophaalpunt"><?php echo _("Land"); ?></label></th>
 			<td><input type="text" name="land_ophaalpunt" id="land_ophaalpunt" value="<?php echo htmlspecialchars($ophaalpunt_from_db->land); ?>" class="regular-text" /></td>
 		</tr>
 		<tr>
-			<th><label for="openingsuren_ophaalpunt">Openingsuren</label></th>
+			<th><label for="openingsuren_ophaalpunt"><?php echo _("Openingsuren"); ?></label></th>
 			<td><textarea name="openingsuren_ophaalpunt" id="openingsuren_ophaalpunt" rows="5" cols="30"><?php echo htmlspecialchars($ophaalpunt_from_db->openingsuren); ?></textarea></td>
 		</tr>
 		</table>
-		<h3>Contactgegevens</h3>
+		<h3><?php echo _("Contactgegevens"); ?></h3>
 		<table class="form-table-myrecy">
 		<tr>
-			<th><label for="contactpersoon">Contactpersoon</label></th>
+			<th><label for="contactpersoon"><?php echo _("Contactpersoon"); ?></label></th>
 			<td><input type="text" name="contactpersoon" id="contactpersoon" value="<?php echo htmlspecialchars($ophaalpunt_from_db->contactpersoon); ?>" class="regular-text" /></td>
 		</tr>
 		<tr>
-			<th><label for="taalvoorkeur">Taalvoorkeur</label></th>
+			<th><label for="taalvoorkeur"><?php echo _("Taalvoorkeur"); ?></label></th>
 			<td>
 				<select name="taalvoorkeur" id="taalvoorkeur"><?php
 				    		if ($result = $MYRECY_mysqli->query("SELECT * FROM talen"))
@@ -165,7 +165,7 @@ get_header(); the_post(); ?>
                                 if($result->num_rows < 1)
                                 {
                                     // no results found, so why even bother? quit! + show error message for users to contact adminstration
-                                    show_myrecy_message("error", "Geen taalvoorkeuren gevonden in de databank, contacteer ons voor hulp.");
+                                    show_myrecy_message("error", _("Geen taalvoorkeuren gevonden in de databank, contacteer ons voor hulp."));
                                     $result->close();
                                     exit;
                                 }
@@ -181,7 +181,7 @@ get_header(); the_post(); ?>
                             else
                             {
                                 // could not query DB, so why even bother? no languages to choose from, but form can maybe continue?
-                                show_myrecy_message("error", "De MyRecy-databank is momenteel niet bereikbaar, dus kan de taalvoorkeuren niet opzoeken. Gelieve even te wachten en opnieuw te proberen. Indien het probleem zich blijft voordoen, contacteer ons voor hulp.");
+                                show_myrecy_message("error", _("De MyRecy-databank is momenteel niet bereikbaar, dus kan de taalvoorkeuren niet opzoeken. Gelieve even te wachten en opnieuw te proberen. Indien het probleem zich blijft voordoen, contacteer ons voor hulp."));
                                 exit; // still continue? Doesn't this give trouble with trying to commit the form?
                             }
                 ?>
@@ -190,17 +190,17 @@ get_header(); the_post(); ?>
 			</td>
 		</tr>
 		<tr>
-			<th><label for="telefoon1">Telefoon</label></th>
+			<th><label for="telefoon1"><?php echo _("Telefoon");?></label></th>
 			<td><input type="text" name="telefoon1" id="telefoon1" value="<?php echo htmlspecialchars($ophaalpunt_from_db->telefoonnummer1); ?>" class="regular-text" /></td>
 			<td><input type="text" name="telefoon2" id="telefoon2" value="<?php echo htmlspecialchars($ophaalpunt_from_db->telefoonnummer2); ?>" class="regular-text" /></td>
 		</tr>
 		<tr>
-			<th><label for="email1">Email</label></th>
+			<th><label for="email1"><?php echo _("Email");?></label></th>
 			<td><input type="text" name="email1" id="email1" value="<?php echo htmlspecialchars($ophaalpunt_from_db->email1); ?>" class="regular-text" /></td>
 			<td><input type="text" name="email2" id="email2" value="<?php echo htmlspecialchars($ophaalpunt_from_db->email2); ?>" class="regular-text" /></td>
 		</tr>
 		<tr>
-			<th><label for="preferredcontact">Bijvoorkeur te contacteren per</label></th>
+			<th><label for="preferredcontact"><?php echo _("Bijvoorkeur te contacteren per");?></label></th>
 			<td>
 				<select name="preferredcontact" id="preferredcontact"><?php
 				    		if ($result = $MYRECY_mysqli->query("SELECT * FROM contacteren"))
@@ -209,7 +209,7 @@ get_header(); the_post(); ?>
                                 if($result->num_rows < 1)
                                 {
                                     // no results found, so why even bother? quit! + show error message for users to contact adminstration
-                                    show_myrecy_message("error", "Geen contactvoorkeuren gevonden in de databank, contacteer ons voor hulp.");
+                                    show_myrecy_message("error", _("Geen contactvoorkeuren gevonden in de databank, contacteer ons voor hulp."));
                                     $result->close();
                                     exit;
                                 }
@@ -225,7 +225,7 @@ get_header(); the_post(); ?>
                             else
                             {
                                 // could not query DB, so why even bother? no languages to choose from, but form can maybe continue?
-                                show_myrecy_message("error", "De MyRecy-databank is momenteel niet bereikbaar, dus kan de contacteervoorkeuren niet opzoeken. Gelieve even te wachten en opnieuw te proberen. Indien het probleem zich blijft voordoen, contacteer ons voor hulp.");
+                                show_myrecy_message("error", _("De MyRecy-databank is momenteel niet bereikbaar, dus kan de contacteervoorkeuren niet opzoeken. Gelieve even te wachten en opnieuw te proberen. Indien het probleem zich blijft voordoen, contacteer ons voor hulp."));
                                 exit; // still continue? Doesn't this give trouble with trying to commit the form?
                             }
                 ?>
@@ -235,10 +235,10 @@ get_header(); the_post(); ?>
 		</tr>
 		</table>
 
-    	<h3>Soort ophaalpunt</h3>
+    	<h3><?php echo _("Soort ophaalpunt");?></h3>
 		<table class="form-table-myrecy">
 		<tr>
-			<th><label for="soortophaalpunt">Soort ophaalpunt</label></th>
+			<th><label for="soortophaalpunt"><?php echo _("Soort ophaalpunt");?></label></th>
 			<td>
 				<select name="soortophaalpunt" id="soortophaalpunt" onclick="show_types_of_intercommunale()"><?php
 				    		if ($result = $MYRECY_mysqli->query("SELECT * FROM soort_ophaalpunt"))
@@ -247,7 +247,7 @@ get_header(); the_post(); ?>
                                 if($result->num_rows < 1)
                                 {
                                     // no results found, so why even bother? quit! + show error message for users to contact adminstration
-                                    show_myrecy_message("error", "Geen soorten gevonden in de databank, contacteer ons voor hulp.");
+                                    show_myrecy_message("error", _("Geen soorten gevonden in de databank, contacteer ons voor hulp."));
                                     $result->close();
                                     exit;
                                 }
@@ -266,7 +266,7 @@ get_header(); the_post(); ?>
                             else
                             {
                                 // could not query DB, so why even bother? no languages to choose from, but form can maybe continue?
-                                show_myrecy_message("error", "De MyRecy-databank is momenteel niet bereikbaar, dus kan de soorten ophaalpunten niet opzoeken. Gelieve even te wachten en opnieuw te proberen. Indien het probleem zich blijft voordoen, contacteer ons voor hulp.");
+                                show_myrecy_message("error", _("De MyRecy-databank is momenteel niet bereikbaar, dus kan de soorten ophaalpunten niet opzoeken. Gelieve even te wachten en opnieuw te proberen. Indien het probleem zich blijft voordoen, contacteer ons voor hulp."));
                                 exit; // still continue? Doesn't this give trouble with trying to commit the form?
                             }
                 ?>
@@ -281,7 +281,7 @@ get_header(); the_post(); ?>
                                 if($result->num_rows < 1)
                                 {
                                     // no results found, so why even bother? quit! + show error message for users to contact adminstration
-                                    show_myrecy_message("error", "Geen intercommunales gevonden in de databank, contacteer ons voor hulp.");
+                                    show_myrecy_message("error", _("Geen intercommunales gevonden in de databank, contacteer ons voor hulp."));
                                     $result->close();
                                     exit;
                                 }
@@ -297,7 +297,7 @@ get_header(); the_post(); ?>
                             else
                             {
                                 // could not query DB, so why even bother? no languages to choose from, but form can maybe continue?
-                                show_myrecy_message("error", "De MyRecy-databank is momenteel niet bereikbaar, dus kan de soorten ophaalpunten niet opzoeken. Gelieve even te wachten en opnieuw te proberen. Indien het probleem zich blijft voordoen, contacteer ons voor hulp.");
+                                show_myrecy_message("error", _("De MyRecy-databank is momenteel niet bereikbaar, dus kan de soorten ophaalpunten niet opzoeken. Gelieve even te wachten en opnieuw te proberen. Indien het probleem zich blijft voordoen, contacteer ons voor hulp."));
                                 exit; // still continue? Doesn't this give trouble with trying to commit the form?
                             }
                 ?>
@@ -306,18 +306,18 @@ get_header(); the_post(); ?>
             </td>
 		</tr>
 		<tr>
-			<th><label for="kurk_ophaalpunt">Materiaal</label></th>
+			<th><label for="kurk_ophaalpunt"><?php echo _("Materiaal");?></label></th>
             <td>
-                <input type="checkbox" name="kurk_ophaalpunt" value="1" <?php if($ophaalpunt_from_db->kurk > 0) echo "checked"; ?> /> kurk
+                <input type="checkbox" name="kurk_ophaalpunt" value="1" <?php if($ophaalpunt_from_db->kurk > 0) echo "checked"; ?> /> <?php echo _("kurk"); ?>
             </td>
             <td>
-                <input type="checkbox" name="parafine_ophaalpunt" value="1" <?php if($ophaalpunt_from_db->parafine > 0) echo "checked"; ?> /> kaarsresten
+                <input type="checkbox" name="parafine_ophaalpunt" value="1" <?php if($ophaalpunt_from_db->parafine > 0) echo "checked"; ?> /> <?php echo _("kaarsresten"); ?>
             </td>
 		</tr>
 		<tr>
-			<th><label for="attest_nodig">Attest nodig?</label></th>
+			<th><label for="attest_nodig"><?php echo _("Attest nodig?"); ?></label></th>
             <td>
-                <input type="checkbox" name="attest_nodig" value="1" <?php if($ophaalpunt_from_db->attest_nodig > 0) echo "checked"; ?>  onclick="show_attest_frequency()" /> ja
+                <input type="checkbox" name="attest_nodig" value="1" <?php if($ophaalpunt_from_db->attest_nodig > 0) echo "checked"; ?>  onclick="show_attest_frequency()" /> <?php echo _("ja"); ?>
             </td>
             <td>
 				<select name="attest_frequentie" id="attest_frequentie" onclick="show_attest_frequency()"><?php
@@ -327,7 +327,7 @@ get_header(); the_post(); ?>
                                 if($result->num_rows < 1)
                                 {
                                     // no results found, so why even bother? quit! + show error message for users to contact adminstration
-                                    show_myrecy_message("error", "Geen frequenties gevonden in de databank, contacteer ons voor hulp.");
+                                    show_myrecy_message("error", _("Geen frequenties gevonden in de databank, contacteer ons voor hulp."));
                                     $result->close();
                                     exit;
                                 }
@@ -343,7 +343,7 @@ get_header(); the_post(); ?>
                             else
                             {
                                 // could not query DB, so why even bother? no languages to choose from, but form can maybe continue?
-                                show_myrecy_message("error", "De MyRecy-databank is momenteel niet bereikbaar, dus kan de soorten ophaalpunten niet opzoeken. Gelieve even te wachten en opnieuw te proberen. Indien het probleem zich blijft voordoen, contacteer ons voor hulp.");
+                                show_myrecy_message("error", _("De MyRecy-databank is momenteel niet bereikbaar, dus kan de soorten ophaalpunten niet opzoeken. Gelieve even te wachten en opnieuw te proberen. Indien het probleem zich blijft voordoen, contacteer ons voor hulp."));
                                 exit; // still continue? Doesn't this give trouble with trying to commit the form?
                             }
                 ?>
@@ -354,7 +354,7 @@ get_header(); the_post(); ?>
 	</table>
     <?php wp_nonce_field( 'profiel_wijziging_'.get_current_user_id().$ophaalpunt_from_db->id ); ?>
 
-    <input type="submit" value="Wijzigingen opslaan">
+    <input type="submit" value="<?php echo _("Wijzigingen opslaan"); ?>">
     </form>
 
     <script>

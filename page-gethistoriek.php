@@ -33,25 +33,25 @@ th {text-align: left;}
           
           if($current_month>=1 && $current_month<=3)
           {
-          	$quarter = "1e kwartaal ".$current_year;
+          	$quarter = sprintf(_("1e kwartaal %d"),$current_year);
             $start_date = strtotime('1-January-'.$current_year);  // timestamp or 1-Janauray 12:00:00 AM
             $end_date = strtotime('1-April-'.$current_year);  // timestamp or 1-April 12:00:00 AM means end of 31 March
           }
           else  if($current_month>=4 && $current_month<=6)
           {
-          	$quarter = "2e kwartaal ".$current_year;
+          	$quarter = sprintf(_("2e kwartaal %d"),$current_year);
             $start_date = strtotime('1-April-'.$current_year);  // timestamp or 1-April 12:00:00 AM
             $end_date = strtotime('1-July-'.$current_year);  // timestamp or 1-July 12:00:00 AM means end of 30 June
           }
           else  if($current_month>=7 && $current_month<=9)
           {
-          	$quarter = "3e kwartaal ".$current_year;
+          	$quarter = sprintf(_("3e kwartaal %d"),$current_year);
             $start_date = strtotime('1-July-'.$current_year);  // timestamp or 1-July 12:00:00 AM
             $end_date = strtotime('1-October-'.$current_year);  // timestamp or 1-October 12:00:00 AM means end of 30 September
           }
           else  if($current_month>=10 && $current_month<=12)
           {
-          	$quarter = "4e kwartaal ".$current_year;
+          	$quarter = sprintf(_("4e kwartaal %d"),$current_year);
             $start_date = strtotime('1-October-'.$current_year);  // timestamp or 1-October 12:00:00 AM
             $end_date = strtotime('1-January-'.($current_year+1));  // timestamp or 1-January Next year 12:00:00 AM means end of 31 December this year
           }
@@ -98,7 +98,7 @@ th {text-align: left;}
 
     $query = "SELECT ophalinghistoriek.* FROM wordpress_link, ophalinghistoriek WHERE wordpress_userid = $user_ID AND ophaalpunt_id = ophalinghistoriek.ophaalpunt AND ophalingsdatum >= \"$startDate\" AND ophalingsdatum < \"$endDate\" AND ";
 
-    if($materiaal == "kurk")
+    if($materiaal == _("kurk"))
     {
         $query .= "(kg_kurk > 0 OR zakken_kurk > 0) "; // enkel kurk zakken / kg
     }
@@ -111,12 +111,12 @@ th {text-align: left;}
 
     if ($result = $MYRECY_mysqli->query($query))
     {
-        echo "<p><strong>Historiek ophalingen ".htmlspecialchars($materiaal)." voor ".htmlspecialchars($daterange)."</strong></p>";
+        echo "<p><strong>".sprintf(_("Historiek ophalingen %s voor %s."),htmlspecialchars($materiaal),htmlspecialchars($daterange))."</strong></p>";
         //printf("Select returned %d rows.\n", $result->num_rows);
         if($result->num_rows < 1)
         {
             // no results found, so why even bother? quit! + show error message for users to contact adminstration
-            echo "<p>Geen ophalingen gevonden</p>";
+            echo "<p>"._("Geen ophalingen gevonden.")."</p>";
             $result->close();
             exit;
         }
@@ -125,9 +125,9 @@ th {text-align: left;}
         $totaal_zakken = 0;
         $totaal_kg = 0;
         echo "\n<table>\n";
-        echo "\n<tr><th>ophalingsdatum</th><th>zakken</th><th>kg</th></tr>\n";
+        echo "\n<tr><th>"._("ophalingsdatum")."</th><th>"._("zakken")."</th><th>"._("kg")."</th></tr>\n";
         
-        if($materiaal == "kurk")
+        if($materiaal == _("kurk"))
         {
             while ($historiek_from_db = $result->fetch_object())
             {
@@ -149,12 +149,12 @@ th {text-align: left;}
         }
         echo "\n</table>\n";
         $result->close();
-        printf ("<p>%d ophalingen in totaal voor <strong>%d</strong> zakken en %d kilogram.</p>\n",$nr_ophalingen, $totaal_zakken, $totaal_kg);
+        printf(_("<p>%d ophalingen in totaal voor <strong>%d</strong> zakken en %d kilogram.</p>\n"),$nr_ophalingen, $totaal_zakken, $totaal_kg);
     }
     else
     {
         // could not query DB, so why even bother? quit! + show error message for users to contact adminstration
-        show_myrecy_message("error", "De MyRecy-databank is momenteel niet bereikbaar, gelieve even te wachten en opnieuw te proberen. Indien het probleem zich blijft voordoen, contacteer ons voor hulp.");
+        show_myrecy_message("error", _("De MyRecy-databank is momenteel niet bereikbaar, gelieve even te wachten en opnieuw te proberen. Indien het probleem zich blijft voordoen, contacteer ons voor hulp."));
         exit;
     }
 
