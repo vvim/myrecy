@@ -218,7 +218,7 @@ get_header(); the_post(); ?>
         </tr>
     </table>
     
-    <div id="txtHint"><strong><?php echo _("De ophaalhistoriek zal hier verschijnen..."); ?></strong></div></div>
+    <div id="txtHint"><strong><?php echo _("Geef een periode op voor kurk en/of kaarsresten en daarna zal de ophaalhistoriek verschijnen."); ?></strong></div></div>
 
 	</div>
 <br>
