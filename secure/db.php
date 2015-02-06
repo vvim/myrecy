@@ -4,6 +4,8 @@
 	$MYRECY_DB_PASSWORD = "YOUR DB PASSWORD";
 	$MYRECY_DB_NAME = "YOUR DB NAME";
 
+    global $MYRECY_mysqli;
+
 	$MYRECY_mysqli = new mysqli($MYRECY_DB_HOST,$MYRECY_DB_USER,$MYRECY_DB_PASSWORD,$MYRECY_DB_NAME);
 
 	/* check connection */
