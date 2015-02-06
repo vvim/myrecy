@@ -122,7 +122,7 @@ get_header(); the_post(); ?>
                 $opmerkingen_form = str_replace($handtekening,"",$vorige_aanmelding->opmerkingen); // haal de $handtekening uit de opmerkingen
                 $datum = $vorige_aanmelding->datum;
                 $contactpersoon = $vorige_aanmelding->contactpersoon;
-                show_myrecy_message("info", sprintf(_("Op %s heeft u %d zakken kurk en %d zakken kaarsresten aangemeld, maar deze zijn nog niet opgehaald. Wilt u deze aantallen aanpassen?"),strftime("%e %B %Y",strtotime($datum)),$zakken_kurk,$zakken_kaarsresten));
+                show_myrecy_message("info", sprintf(_("Op %s heeft u %d zakken kurk en %d zakken kaarsresten aangemeld, maar deze zijn nog niet opgehaald. Wilt u deze aantallen aanpassen?"),utf8_encode(strftime("%e %B %Y",strtotime($datum))),$zakken_kurk,$zakken_kaarsresten));
                 $result->close();
             }
         }
