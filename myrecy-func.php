@@ -2,7 +2,7 @@
 
 // TODO: Later there has to be a check which language the user speaks and adapt the locale accordingly
 // check for WordPress language user dependent or bilingual
-setlocale(LC_ALL, 'nl_NL');
+// setlocale(LC_ALL, 'nl_NL'); // -> check moved to header.php
 
 function show_myrecy_message($style, $message)
 {
