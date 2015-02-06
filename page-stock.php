@@ -107,7 +107,7 @@ get_header(); the_post(); ?>
             //printf("Select returned %d rows.\n", $result->num_rows);
             if($result->num_rows < 1)
             {
-                show_myrecy_message("info", "Nog geen aanmelding gevonden, je kan hieronder een nieuwe aanmelding ingeven.");
+                show_myrecy_message("info", _("Nog geen aanmelding gevonden, je kan hieronder een nieuwe aanmelding ingeven."));
                 $result->close();
             }
             else
