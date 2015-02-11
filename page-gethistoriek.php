@@ -1,4 +1,7 @@
-<!DOCTYPE html>
+<?php
+
+  require_once('login-and-language-check.php');
+?><!DOCTYPE html>
 <html>
 <head>
 </style>
