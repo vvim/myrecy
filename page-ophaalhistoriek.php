@@ -36,13 +36,20 @@ get_header(); the_post(); ?>
                 return;
             }
 
+            global $DB_materiaal;
+            $DB_materiaal = "kurk";
+
+            if ($materiaal == _("kaarsresten")) // behalve als het kaarsresten zijn :-)
+            {
+                $DB_materiaal = "kaarsresten";
+            }
             // for some reason, requiring db.php once outside of the function call, does not count?
             // require("secure/db.php"); --> not needed: https://wordpress.org/support/topic/global-variables-not-working
 
             global $user_ID;
             global $MYRECY_mysqli;
 
-            $result = $MYRECY_mysqli->query("SELECT min(ophalinghistoriek.ophalingsdatum),  max(ophalinghistoriek.ophalingsdatum) FROM wordpress_link, ophalinghistoriek WHERE wordpress_userid = $user_ID AND ophaalpunt_id = ophalinghistoriek.ophaalpunt AND (kg_$materiaal > 0 OR zakken_$materiaal > 0)");
+            $result = $MYRECY_mysqli->query("SELECT min(ophalinghistoriek.ophalingsdatum),  max(ophalinghistoriek.ophalingsdatum) FROM wordpress_link, ophalinghistoriek WHERE wordpress_userid = $user_ID AND ophaalpunt_id = ophalinghistoriek.ophaalpunt AND (kg_$DB_materiaal > 0 OR zakken_$DB_materiaal > 0)");
             
             if (!$result)
             {
@@ -75,7 +82,7 @@ get_header(); the_post(); ?>
             $startDate = strtotime("01 Sept 2010");
             $endDate = time(); // "now"
 */
-            echo "<select onchange=\"showUser(this.value,this.name)\" name=\"$materiaal\">\n";
+            echo "<select onchange=\"showUser(this.value,this.name)\" name=\"$DB_materiaal\">\n";
             echo "                <option></option>\n";
 
             switch ($frequency)
@@ -188,12 +195,12 @@ get_header(); the_post(); ?>
             <?php
                     if($ophaalpunt_from_db->kurk == 1)
                     { ?>
-            <th>kurk</th>
+            <th><?php echo _("kurk"); ?></th>
             <?php
                     }
                     if($ophaalpunt_from_db->parafine == 1)
                     { ?>
-            <th>kaarsresten</th>
+            <th><?php echo _("kaarsresten"); ?></th>
             <?php
                     } ?>
         </tr>

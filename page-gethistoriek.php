@@ -1,25 +1,12 @@
 <!DOCTYPE html>
 <html>
 <head>
-<?php /*
-<style>
-table {
-    width: 100%;
-    border-collapse: collapse;
-}
-
-table, td, th {
-    border: 1px solid black;
-    padding: 5px;
-}
-
-th {text-align: left;}
-*/ ?>
 </style>
 </head>
 <body>
 
 <?php
+
     require_once("myrecy-func.php");
 
 	require_once("secure/db.php");
@@ -98,7 +85,7 @@ th {text-align: left;}
 
     $query = "SELECT ophalinghistoriek.* FROM wordpress_link, ophalinghistoriek WHERE wordpress_userid = $user_ID AND ophaalpunt_id = ophalinghistoriek.ophaalpunt AND ophalingsdatum >= \"$startDate\" AND ophalingsdatum < \"$endDate\" AND ";
 
-    if($materiaal == _("kurk"))
+    if($materiaal == "kurk")
     {
         $query .= "(kg_kurk > 0 OR zakken_kurk > 0) "; // enkel kurk zakken / kg
     }
@@ -111,7 +98,7 @@ th {text-align: left;}
 
     if ($result = $MYRECY_mysqli->query($query))
     {
-        echo "<p><strong>".sprintf(_("Historiek ophalingen %s voor %s."),htmlspecialchars($materiaal),htmlspecialchars($daterange))."</strong></p>";
+        echo "<p><strong>".sprintf(_("Historiek ophalingen %s voor %s."),_(htmlspecialchars($materiaal)),htmlspecialchars($daterange))."</strong></p>";
         //printf("Select returned %d rows.\n", $result->num_rows);
         if($result->num_rows < 1)
         {
@@ -127,7 +114,7 @@ th {text-align: left;}
         echo "\n<table>\n";
         echo "\n<tr><th>"._("ophalingsdatum")."</th><th>"._("zakken")."</th><th>"._("kg")."</th></tr>\n";
         
-        if($materiaal == _("kurk"))
+        if($materiaal == "kurk")
         {
             while ($historiek_from_db = $result->fetch_object())
             {

@@ -172,9 +172,9 @@ get_header(); the_post(); ?>
                                 while($taalvoorkeuren = $result->fetch_object())
                                 {
                                     if($taalvoorkeuren->id == $ophaalpunt_from_db->taalvoorkeur)
-                                        printf("\n\t\t\t\t\t<option value=\"%d\" selected>%s</option>", htmlspecialchars($taalvoorkeuren->id), htmlspecialchars($taalvoorkeuren->taal));
+                                        printf("\n\t\t\t\t\t<option value=\"%d\" selected>%s</option>", htmlspecialchars($taalvoorkeuren->id), _(htmlspecialchars($taalvoorkeuren->taal)));
                                     else
-                                        printf("\n\t\t\t\t\t<option value=\"%d\">%s</option>", htmlspecialchars($taalvoorkeuren->id), htmlspecialchars($taalvoorkeuren->taal));
+                                        printf("\n\t\t\t\t\t<option value=\"%d\">%s</option>", htmlspecialchars($taalvoorkeuren->id), _(htmlspecialchars($taalvoorkeuren->taal)));
                                 }
                                 $result->close();
                             }
@@ -216,9 +216,9 @@ get_header(); the_post(); ?>
                                 while($contacteren = $result->fetch_object())
                                 {
                                     if($contacteren->id == $ophaalpunt_from_db->preferred_contact)
-                                        printf("\n\t\t\t\t\t<option value=\"%d\" selected>%s</option>", htmlspecialchars($contacteren->id), htmlspecialchars($contacteren->medium));
+                                        printf("\n\t\t\t\t\t<option value=\"%d\" selected>%s</option>", htmlspecialchars($contacteren->id), _(htmlspecialchars($contacteren->medium)));
                                     else
-                                        printf("\n\t\t\t\t\t<option value=\"%d\">%s</option>", htmlspecialchars($contacteren->id), htmlspecialchars($contacteren->medium));
+                                        printf("\n\t\t\t\t\t<option value=\"%d\">%s</option>", htmlspecialchars($contacteren->id), _(htmlspecialchars($contacteren->medium)));
                                 }
                                 $result->close();
                             }
@@ -257,9 +257,9 @@ get_header(); the_post(); ?>
                                     if($soorten->soort == "intercommunale")
                                         $intercommunale_code = $soorten->code;
                                     if($soorten->code == $ophaalpunt_from_db->code)
-                                        printf("\n\t\t\t\t\t<option value=\"%d\" selected>%s</option>", htmlspecialchars($soorten->code), htmlspecialchars($soorten->soort));
+                                        printf("\n\t\t\t\t\t<option value=\"%d\" selected>%s</option>", htmlspecialchars($soorten->code), _(htmlspecialchars($soorten->soort)));
                                     else
-                                        printf("\n\t\t\t\t\t<option value=\"%d\">%s</option>", htmlspecialchars($soorten->code), htmlspecialchars($soorten->soort));
+                                        printf("\n\t\t\t\t\t<option value=\"%d\">%s</option>", htmlspecialchars($soorten->code), _(htmlspecialchars($soorten->soort)));
                                 }
                                 $result->close();
                             }
@@ -334,9 +334,9 @@ get_header(); the_post(); ?>
                                 while($frequencies = $result->fetch_object())
                                 {
                                     if($frequencies->id == $ophaalpunt_from_db->frequentie_attest)
-                                        printf("\n\t\t\t\t\t<option value=\"%d\" selected>%s</option>", htmlspecialchars($frequencies->id), htmlspecialchars($frequencies->frequentie));
+                                        printf("\n\t\t\t\t\t<option value=\"%d\" selected>%s</option>", htmlspecialchars($frequencies->id), _(htmlspecialchars($frequencies->frequentie)));
                                     else
-                                        printf("\n\t\t\t\t\t<option value=\"%d\">%s</option>", htmlspecialchars($frequencies->id), htmlspecialchars($frequencies->frequentie));
+                                        printf("\n\t\t\t\t\t<option value=\"%d\">%s</option>", htmlspecialchars($frequencies->id), _(htmlspecialchars($frequencies->frequentie)));
                                 }
                                 $result->close();
                             }
