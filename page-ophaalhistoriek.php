@@ -85,6 +85,8 @@ get_header(); the_post(); ?>
             echo "<select onchange=\"showUser(this.value,this.name)\" name=\"$DB_materiaal\">\n";
             echo "                <option></option>\n";
 
+            echo " <!-- <vvim> frequency is $frequency -->\n";
+
             switch ($frequency)
             {
                 case 1:
@@ -166,6 +168,26 @@ get_header(); the_post(); ?>
 			show_myrecy_message("error", _("De MyRecy-databank is momenteel niet bereikbaar, gelieve even te wachten en opnieuw te proberen. Indien het probleem zich blijft voordoen, contacteer ons voor hulp."));
 			exit;
 		}
+
+        /***
+            by default, if a collection point does not require a regular
+            certificate ('$ophaalpunt_from_db->attest_nodig == 0'),
+            we should suppose that they only want to see a yearly overview
+            in the "collection history" of MyRecy.
+
+            unfortunately, in page-profiel-ophaalpunt.php , when there is no
+            attest-frequency selected, the default value is "1" ("monthly").
+            Ugggh...
+
+            So, we now put the default $attest_frequency on "3" (meaning "yearly")
+            and only change it back when there really is a certificate requested
+        ***/
+        $attest_frequency = 3;
+        if($ophaalpunt_from_db->attest_nodig > 0)
+        {
+            $attest_frequency = $ophaalpunt_from_db->frequentie_attest;
+        }
+        /*** </dirty_attest_frequency_hack> ***/
 	?>
     <script>
         function showUser(str,materiaal) {
@@ -185,7 +207,7 @@ get_header(); the_post(); ?>
                         document.getElementById("txtHint").innerHTML = xmlhttp.responseText;
                     }
                 }
-                xmlhttp.open("GET","gethistoriek/?q="+str+"&materiaal="+materiaal+"&frequentie="+<?php echo $ophaalpunt_from_db->frequentie_attest; ?>,true);
+                xmlhttp.open("GET","gethistoriek/?q="+str+"&materiaal="+materiaal+"&frequentie="+<?php /*** <dirty_attest_frequency_hack /> ***/ echo $attest_frequency; ?>,true);
                 xmlhttp.send();
             }
         }
@@ -226,7 +248,7 @@ get_header(); the_post(); ?>
             <td><form><input type="hidden" value="kurk">
             <?php
                         // startdatum en einddatum nog bepalen!
-                        print_attest_frequency_select( $ophaalpunt_from_db->frequentie_attest, _("kurk"));
+                        print_attest_frequency_select( /*** <dirty_attest_frequency_hack /> ***/ $attest_frequency, _("kurk"));
                         echo "            </form></td>\n";
                     }
                     if($ophaalpunt_from_db->parafine == 1)
@@ -234,7 +256,7 @@ get_header(); the_post(); ?>
             <td><form><input type="hidden" value="kaarsresten">
             <?php
                         // startdatum en einddatum nog bepalen!
-                        print_attest_frequency_select( $ophaalpunt_from_db->frequentie_attest, _("kaarsresten"));
+                        print_attest_frequency_select( /*** <dirty_attest_frequency_hack /> ***/ $attest_frequency, _("kaarsresten"));
                         echo "            </form></td>\n";
                     } ?>
         </tr>
