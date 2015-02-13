@@ -122,7 +122,7 @@ get_header(); the_post(); ?>
                 $opmerkingen_form = str_replace($handtekening,"",$vorige_aanmelding->opmerkingen); // haal de $handtekening uit de opmerkingen
                 $datum = $vorige_aanmelding->datum;
                 $contactpersoon = $vorige_aanmelding->contactpersoon;
-                show_myrecy_message("info", sprintf(_("Op %s heeft u %d zakken kurk en %d zakken kaarsresten aangemeld, maar deze zijn nog niet opgehaald. Wilt u deze aantallen aanpassen?"),utf8_encode(strftime("%e %B %Y",strtotime($datum))),$zakken_kurk,$zakken_kaarsresten));
+                show_myrecy_message("info", sprintf(_("Op %s heeft u %d zakken kurk en %d zakken kaarsresten aangemeld, maar deze zijn nog niet gepland in een ophaalronde. Wilt u deze aantallen nog actualiseren?"),utf8_encode(strftime("%e %B %Y",strtotime($datum))),$zakken_kurk,$zakken_kaarsresten));
                 $result->close();
             }
         }
@@ -145,7 +145,7 @@ get_header(); the_post(); ?>
     <input type="hidden" id="aanmelding_id" name="aanmelding_id" value="<?php echo $aanmelding_id; ?>" />
 
 
-    <h3><?php echo _("Momenteel heeft ons ophaalpunt het volgende in stock");?></h3>
+    <h3><?php global $MYRECY_ophaalpunt_naam; echo sprintf(_("%s heeft momenteel het volgende in stock:"),$MYRECY_ophaalpunt_naam);?></h3>
 
     <table class="form-table-myrecy">
 		<tr>
@@ -167,6 +167,7 @@ get_header(); the_post(); ?>
     <input type="submit" value="<?php echo _("Stock doorgeven aan De Vlaspit");?>">
 
     </form>
+    <p><?php echo _("U kunt ofwel het aantal zakken ofwel het aantal kilo invoeren, of beide."); ?></p>
     </div>
 </div>
 <?php get_footer() ?>

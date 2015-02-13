@@ -188,6 +188,7 @@ get_header(); the_post(); ?>
 
 				</select>
 			</td>
+			<td><?php echo _("De voorkeurtaal bepaalt de taal van deze pagina’s."); ?></td>
 		</tr>
 		<tr>
 			<th><label for="telefoon1"><?php echo _("Telefoon");?></label></th>
@@ -306,7 +307,7 @@ get_header(); the_post(); ?>
             </td>
 		</tr>
 		<tr>
-			<th><label for="kurk_ophaalpunt"><?php echo _("Materiaal");?></label></th>
+			<th><label for="kurk_ophaalpunt"><?php echo _("Ingezamelde afvalstof");?></label></th>
             <td>
                 <input type="checkbox" name="kurk_ophaalpunt" value="1" <?php if($ophaalpunt_from_db->kurk > 0) echo "checked"; ?> /> <?php echo _("kurk"); ?>
             </td>
