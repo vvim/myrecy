@@ -9,15 +9,44 @@
 function user_language()
 {
     global $user_ID;
+    
+    // why don't we make $ophaalpunt_from_db a global var???
+    global $MYRECY_ophaalpunt_naam;
+    global $MYRECY_ophaalpunt_plaats;
 
 	require_once("secure/db.php");
 
     if ($result = $MYRECY_mysqli->query("SELECT ophaalpunten.* FROM wordpress_link, ophaalpunten WHERE wordpress_userid = $user_ID and ophaalpunt_id = ophaalpunten.id"))
     {
         $ophaalpunt_from_db = $result->fetch_object();
+        $result->close();
+
+        $MYRECY_ophaalpunt_naam = $ophaalpunt_from_db->naam;
+        $MYRECY_ophaalpunt_plaats = $ophaalpunt_from_db->plaats;
+        
+        
+        /***     if preferred_language is changed in the profile, that change is not
+                   yet put in the DB when this check is performed. So the first reload
+                   of the profile-page will still be in the previous preferred_language.
+
+         dirty hack:  check if the language is being changed, and return that output
+
+        consequences: also the value of the global vars $MYRECY_ophaalpunt_naam
+                                 and $MYRECY_ophaalpunt_plaats should be adjusted
+        ***/        
+        $pref_lang = $ophaalpunt_from_db->taalvoorkeur;
+        
+         if(wp_verify_nonce( $_POST["_wpnonce"], 'profiel_wijziging_'.get_current_user_id().$ophaalpunt_from_db->id ))
+         {
+                // now we know a change has been made in the profile, so re-instate the lang_pref and the global variables:
+                $pref_lang = $_POST["taalvoorkeur"];
+                $MYRECY_ophaalpunt_naam = $_POST["naam_ophaalpunt"];
+                $MYRECY_ophaalpunt_plaats = $_POST["plaats_ophaalpunt"];
+         }
+        /*** </dirty_pref_lang_hack> ***/
         
         // ipv uit de DB te halen (table TALEN), hier de vier mogelijkheden:
-        switch($ophaalpunt_from_db->taalvoorkeur)
+        switch($pref_lang)
         {
             case 1: // Dutch
                 return "NL";
