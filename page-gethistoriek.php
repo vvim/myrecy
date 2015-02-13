@@ -60,7 +60,7 @@
                 $startDate = date("Y-m-01",$timestamp);
                 $interval = " + 1 month";
                 $endDate = date("Y-m-01",strtotime( $startDate.$interval));
-                return array(strtotime($startDate), strtotime($endDate), strftime($representation,$timestamp));
+                return array(strtotime($startDate), strtotime($endDate), utf8_encode(strftime($representation,$timestamp)));
                 break;
             case 2:
                 // "kwartaal";
@@ -72,7 +72,7 @@
                 $startDate = date("Y-01-01",$timestamp);
                 $interval = " + 1 year";
                 $endDate = date("Y-m-d",strtotime( $startDate.$interval));
-                return array(strtotime($startDate), strtotime($endDate), strftime($representation,$timestamp));
+                return array(strtotime($startDate), strtotime($endDate), utf8_encode(strftime($representation,$timestamp)));
                 break;
         }
     }
@@ -121,7 +121,7 @@
         {
             while ($historiek_from_db = $result->fetch_object())
             {
-                printf ("<tr><td>%s</td><td>%d</td><td>%d</td></tr>\n", strftime("%e %b %Y",strtotime($historiek_from_db->ophalingsdatum)), $historiek_from_db->zakken_kurk, $historiek_from_db->kg_kurk);
+                printf ("<tr><td>%s</td><td>%d</td><td>%d</td></tr>\n", utf8_encode(strftime("%e %b %Y",strtotime($historiek_from_db->ophalingsdatum))), $historiek_from_db->zakken_kurk, $historiek_from_db->kg_kurk);
                 $nr_ophalingen++;
                 $totaal_zakken += intval($historiek_from_db->zakken_kurk);
                 $totaal_kg += intval($historiek_from_db->kg_kurk);
@@ -131,7 +131,7 @@
         {
             while ($historiek_from_db = $result->fetch_object())
             {
-                printf ("<tr><td>%s</td><td>%d</td><td>%d</td></tr>\n", strftime("%e %b %Y",strtotime($historiek_from_db->ophalingsdatum)), $historiek_from_db->zakken_kaarsresten, $historiek_from_db->kg_kaarsresten);
+                printf ("<tr><td>%s</td><td>%d</td><td>%d</td></tr>\n", utf8_encode(strftime("%e %b %Y",strtotime($historiek_from_db->ophalingsdatum))), $historiek_from_db->zakken_kaarsresten, $historiek_from_db->kg_kaarsresten);
                 $nr_ophalingen++;
                 $totaal_zakken += intval($historiek_from_db->zakken_kaarsresten);
                 $totaal_kg += intval($historiek_from_db->kg_kaarsresten);
@@ -139,7 +139,7 @@
         }
         echo "\n</table>\n";
         $result->close();
-        printf(_("<p>%d ophalingen in totaal voor <strong>%d</strong> zakken en %d kilogram.</p>\n"),$nr_ophalingen, $totaal_zakken, $totaal_kg);
+        printf("<p>"._("%d ophalingen in totaal voor <strong>%d</strong> zakken en %d kilogram.")."</p>\n",$nr_ophalingen, $totaal_zakken, $totaal_kg);
     }
     else
     {
