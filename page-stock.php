@@ -76,7 +76,7 @@ get_header(); the_post(); ?>
 
                     if($statement->execute())
                     {
-                      	show_myrecy_message("good",sprintf(_("Hoeveelheden zijn doorgegeven aan De Vlaspit: %d zakken kurk en %d zakken kaarsresten."),$zakken_kurk,$zakken_kaarsresten));
+                      	show_myrecy_message("good",sprintf(_("Hoeveelheden zijn doorgegeven aan De Vlaspit: %d zakken kurk (%d kg) en %d zakken kaarsresten (%d kg)."),$zakken_kurk,$kg_kurk,$zakken_kaarsresten,$kg_kaarsresten));
                         // ID of last inserted record is : ' .$statement->insert_id ';
                     }
                     else
