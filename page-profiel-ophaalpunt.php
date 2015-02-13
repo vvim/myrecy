@@ -118,31 +118,31 @@ get_header(); the_post(); ?>
 		<table class="form-table-myrecy">
 		<tr>
 			<th><label for="naam_ophaalpunt"><?php echo _("Naam ophaalpunt"); ?></label></th>
-			<td><input type="text" name="naam_ophaalpunt" id="naam_ophaalpunt" value="<?php echo htmlspecialchars($ophaalpunt_from_db->naam); ?>" class="regular-text" /></td>
+			<td><input type="text" name="naam_ophaalpunt" id="naam_ophaalpunt" value="<?php echo htmlspecialchars($ophaalpunt_from_db->naam); ?>" class="extra-long" /></td>
 		</tr>
 		<tr>
 			<th><label for="straat_ophaalpunt"><?php echo _("Straat"); ?></label></th>
-			<td><input type="text" name="straat_ophaalpunt" id="straat_ophaalpunt" value="<?php echo htmlspecialchars($ophaalpunt_from_db->straat); ?>" class="regular-text" /></td>
+			<td><input type="text" name="straat_ophaalpunt" id="straat_ophaalpunt" value="<?php echo htmlspecialchars($ophaalpunt_from_db->straat); ?>" class="extra-long" /></td>
 		</tr>
 		<tr>
 			<th><label for="huisnr_ophaalpunt"><?php echo _("Huisnummer"); ?></label></th>
-			<td><input type="text" name="huisnr_ophaalpunt" id="huisnr_ophaalpunt" value="<?php echo htmlspecialchars($ophaalpunt_from_db->nr); ?>" class="regular-text" /></td>
+			<td><input type="text" name="huisnr_ophaalpunt" id="huisnr_ophaalpunt" value="<?php echo htmlspecialchars($ophaalpunt_from_db->nr); ?>" class="extra-long" /></td>
 		</tr>
 		<tr>
 			<th><label for="bus_ophaalpunt"><?php echo _("Bus"); ?></label></th>
-			<td><input type="text" name="bus_ophaalpunt" id="bus_ophaalpunt" value="<?php echo htmlspecialchars($ophaalpunt_from_db->bus); ?>" class="regular-text" /></td>
+			<td><input type="text" name="bus_ophaalpunt" id="bus_ophaalpunt" value="<?php echo htmlspecialchars($ophaalpunt_from_db->bus); ?>" class="extra-long" /></td>
 		</tr>
 		<tr>
 			<th><label for="postcode_ophaalpunt"><?php echo _("Postcode"); ?></label></th>
-			<td><input type="text" name="postcode_ophaalpunt" id="postcode_ophaalpunt" value="<?php echo htmlspecialchars($ophaalpunt_from_db->postcode); ?>" class="regular-text" /></td>
+			<td><input type="text" name="postcode_ophaalpunt" id="postcode_ophaalpunt" value="<?php echo htmlspecialchars($ophaalpunt_from_db->postcode); ?>" class="extra-long" /></td>
 		</tr>
 		<tr>
 			<th><label for="plaats_ophaalpunt"><?php echo _("Plaats"); ?></label></th>
-			<td><input type="text" name="plaats_ophaalpunt" id="plaats_ophaalpunt" value="<?php echo htmlspecialchars($ophaalpunt_from_db->plaats); ?>" class="regular-text" /></td>
+			<td><input type="text" name="plaats_ophaalpunt" id="plaats_ophaalpunt" value="<?php echo htmlspecialchars($ophaalpunt_from_db->plaats); ?>" class="extra-long" /></td>
 		</tr>
 		<tr>
 			<th><label for="land_ophaalpunt"><?php echo _("Land"); ?></label></th>
-			<td><input type="text" name="land_ophaalpunt" id="land_ophaalpunt" value="<?php echo htmlspecialchars($ophaalpunt_from_db->land); ?>" class="regular-text" /></td>
+			<td><input type="text" name="land_ophaalpunt" id="land_ophaalpunt" value="<?php echo htmlspecialchars($ophaalpunt_from_db->land); ?>" class="extra-long" /></td>
 		</tr>
 		<tr>
 			<th><label for="openingsuren_ophaalpunt"><?php echo _("Openingsuren"); ?></label></th>
@@ -153,7 +153,7 @@ get_header(); the_post(); ?>
 		<table class="form-table-myrecy">
 		<tr>
 			<th><label for="contactpersoon"><?php echo _("Contactpersoon"); ?></label></th>
-			<td><input type="text" name="contactpersoon" id="contactpersoon" value="<?php echo htmlspecialchars($ophaalpunt_from_db->contactpersoon); ?>" class="regular-text" /></td>
+			<td colspan="2"><input type="text" name="contactpersoon" id="contactpersoon" value="<?php echo htmlspecialchars($ophaalpunt_from_db->contactpersoon); ?>" class="extra-long" /></td>
 		</tr>
 		<tr>
 			<th><label for="taalvoorkeur"><?php echo _("Taalvoorkeur"); ?></label></th>

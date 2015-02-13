@@ -31,6 +31,14 @@ input.number-input-slim {
 	width: 50px;
 }
 
+input.extra-long {
+	width: 300px;
+}
+
+input.regular-text {
+	width: 200px;
+}
+
 input.contact-input-hidden {
 	visibility: hidden;
 	display: none;
