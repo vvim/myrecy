@@ -98,7 +98,7 @@ get_header(); the_post(); ?>
                         echo "\n";
                         echo "<!-- [vvim] currentdate:".date('Y/m/d',$currentDate)." >= ".date('Y/m/d',$startDate)."-->";
                         echo "\n";
-                        echo "                <option value=\"".$currentDate."\">".strftime($representation,$currentDate) . "</option>\n";
+                        echo "                <option value=\"".$currentDate."\">".utf8_encode(strftime($representation,$currentDate)) . "</option>\n";
                         $currentDate = strtotime( date('Y/m/d',$currentDate).$interval);
                     }
 
@@ -190,6 +190,21 @@ get_header(); the_post(); ?>
             }
         }
     </script>
+    <!--
+    <table class="form-table-myrecy">
+        <tr>
+            <th><label for="naam_ophaalpunt"><?php echo _("Naam ophaalpunt"); ?></label></th>
+            <td><?php global $MYRECY_ophaalpunt_naam; global $MYRECY_ophaalpunt_plaats; echo $MYRECY_ophaalpunt_naam; ?></td>
+        <tr>
+        </tr>
+            <th><label for="plaats_ophaalpunt"><?php echo _("Plaats"); ?></label></th>
+            <td><?php echo $MYRECY_ophaalpunt_plaats; ?></td>
+        </tr>
+    </table>
+    -->
+    <p><strong><label for="naam_ophaalpunt"><?php echo _("Naam ophaalpunt").":"; ?></label></strong> <?php global $MYRECY_ophaalpunt_naam; global $MYRECY_ophaalpunt_plaats; echo $MYRECY_ophaalpunt_naam; ?><br/>
+    <strong><label for="plaats_ophaalpunt"><?php echo _("Plaats").":"; ?></label></strong> <?php echo $MYRECY_ophaalpunt_plaats; ?></p>
+
     <table class="form-table-myrecy">
         <tr>
             <?php
