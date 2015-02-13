@@ -117,27 +117,11 @@ function pippin_gettext_demo($translated_text, $text , $domain)
 
 add_filter('gettext','pippin_gettext_demo',20,3);
 
-function translate_title( $title, $id = null ) {
-    global $MYRECY_locale;
-    global $user_ID;
-
-    // translating Theme My Login plugin
+function translate_title( $title, $id = null )
+{
 	switch($title)
 	{
         case 'Log Out':
-            // wis deze switch en laat gettext het oplossen!!!
-            /*
-            switch($MYRECY_locale)
-            {
-                case 'fr_BE':
-                    return 'Déconnecter';
-                    break;
-                default:
-                    return 'Afmelden';
-                    break;
-            }*/
-
-            // met gettext:
             return _('Afmelden');
             break;
         case 'Log In':
