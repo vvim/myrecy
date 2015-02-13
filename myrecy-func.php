@@ -34,6 +34,6 @@ function show_myrecy_message($style, $message)
  * as taken from http://www.avoid.org/php-determine-the-quarter-for-a-timestamp/
  */
 function quarter($ts) {
-   return ceil(date('n', $ts)/3);
+   return ceil(date('n', $ts)/3); // numeric value of the month
 }
 ?>
