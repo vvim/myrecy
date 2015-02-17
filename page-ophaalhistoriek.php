@@ -265,5 +265,4 @@ get_header(); the_post(); ?>
     <div id="txtHint"><strong><?php echo _("Geef een periode op voor kurk en/of kaarsresten en daarna zal de ophaalhistoriek verschijnen."); ?></strong></div></div>
 
 	</div>
-<br>
 <?php get_footer() ?>
