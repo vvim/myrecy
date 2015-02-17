@@ -1,6 +1,6 @@
 <?php
  
-  if(MYRECY_Beheerder())
+  if(MYRECY_Administrator())
   {
 ?>
      <div id="frame-bottom">
