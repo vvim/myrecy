@@ -29,11 +29,12 @@ the_post(); ?>
     <div id="info">
         <p>Deze module is enkel toegankelijk voor <strong><?php echo  $current_user->user_login; ?></strong>. Hier kan u:</p>
         <ul>
-            <li>Een nieuwe gebruiker van MyRecy <a href="../beheer-myrecy-gebruiker-aanmaken/">aanmaken</a> (enkel nog niet-gelinkte ophaalpunten tonen?).</li>
+            <li>Een nieuwe gebruiker van MyRecy <a href="../beheer-myrecy-gebruiker-aanmaken/">aanmaken</a>.</li>
             <li>Een gebruiker van MyRecy <a href="../beheer-myrecy-gebruiker-verwijderen">verwijderen</a>.</li>
             <li>Uzelf aan een ophaalpunt naar keuze <a href="../beheer-ophaalpunt-linken-uzelf">linken</a>.</li>
         </ul>
     </div>
 
+        </div>
 	</div>
 <?php get_footer() ?>

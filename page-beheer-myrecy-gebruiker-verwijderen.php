@@ -26,7 +26,8 @@ the_post(); ?>
 		require_once("secure/db.php");
     ?>
 
- (enkel nog niet-gelinkte ophaalpunten tonen?)
+ (... nog geen inhoud)
 
+        </div>
 	</div>
 <?php get_footer() ?>

@@ -116,5 +116,6 @@ the_post(); ?>
 
     ?>
 
+        </div>
 	</div>
 <?php get_footer() ?>
