@@ -70,9 +70,11 @@ function user_language()
 function MYRECY_Administrator()
 {
     global $user_ID;
-    $Wim = 1;
-    $Geert = 4;
-	return (($user_ID == $Wim) || ($user_ID == $Geert));
+    global $ADMIN_Wim;
+    global $ADMIN_Geert;
+    $ADMIN_Wim = 1;
+    $ADMIN_Geert = 4;
+	return (($user_ID == $ADMIN_Wim) || ($user_ID == $ADMIN_Geert));
 }
 
 
