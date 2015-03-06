@@ -96,9 +96,11 @@ the_post(); ?>
             <select  name="telinkenophaalpunt" id="telinkenophaalpunt">
 
     <?php
+            $replace_me = array("\'", "\n");
+            $replace_by = array("'", " ");
             while ($ophaalpunt_from_db = $result->fetch_object())
             {
-                echo "\t<option value=\"$ophaalpunt_from_db->id\">$ophaalpunt_from_db->naam</option>\n";
+                echo "\t<option value=\"$ophaalpunt_from_db->id\">".htmlspecialchars(str_replace($replace_me, $replace_by, $ophaalpunt_from_db->naam))."</option>\n";
             }
 
             echo "\n</select>\n";
