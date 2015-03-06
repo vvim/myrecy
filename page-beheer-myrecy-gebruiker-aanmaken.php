@@ -117,7 +117,6 @@ the_post(); ?>
 
         if ($result = $MYRECY_mysqli->query("SELECT ophaalpunten.* FROM ophaalpunten WHERE ophaalpunten.id not in (select `ophaalpunt_id` from wordpress_link where wordpress_userid <> $ADMIN_Wim AND wordpress_userid <> $ADMIN_Geert)  ORDER BY naam"))
         {
-/* debug*/ printf("<!-- <vvim> Select returned %d rows.-->\n", $result->num_rows);
             if($result->num_rows < 1)
             {
                 // no results found, so why even bother? quit! + show error message for users to contact adminstration
