@@ -118,42 +118,42 @@ get_header(); the_post(); ?>
 		<table class="form-table-myrecy">
 		<tr>
 			<th><label for="naam_ophaalpunt"><?php echo _("Naam ophaalpunt"); ?></label></th>
-			<td><input type="text" name="naam_ophaalpunt" id="naam_ophaalpunt" value="<?php echo htmlspecialchars($ophaalpunt_from_db->naam); ?>" class="extra-long" /></td>
+			<td><input type="text" name="naam_ophaalpunt" id="naam_ophaalpunt" value="<?php echo htmlspecialchars(str_replace("\'", "'", $ophaalpunt_from_db->naam)); ?>" class="extra-long" /></td>
 		</tr>
 		<tr>
 			<th><label for="straat_ophaalpunt"><?php echo _("Straat"); ?></label></th>
-			<td><input type="text" name="straat_ophaalpunt" id="straat_ophaalpunt" value="<?php echo htmlspecialchars($ophaalpunt_from_db->straat); ?>" class="extra-long" /></td>
+			<td><input type="text" name="straat_ophaalpunt" id="straat_ophaalpunt" value="<?php echo htmlspecialchars(str_replace("\'", "'", $ophaalpunt_from_db->straat)); ?>" class="extra-long" /></td>
 		</tr>
 		<tr>
 			<th><label for="huisnr_ophaalpunt"><?php echo _("Huisnummer"); ?></label></th>
-			<td><input type="text" name="huisnr_ophaalpunt" id="huisnr_ophaalpunt" value="<?php echo htmlspecialchars($ophaalpunt_from_db->nr); ?>" class="extra-long" /></td>
+			<td><input type="text" name="huisnr_ophaalpunt" id="huisnr_ophaalpunt" value="<?php echo htmlspecialchars(str_replace("\'", "'", $ophaalpunt_from_db->nr)); ?>" class="extra-long" /></td>
 		</tr>
 		<tr>
 			<th><label for="bus_ophaalpunt"><?php echo _("Bus"); ?></label></th>
-			<td><input type="text" name="bus_ophaalpunt" id="bus_ophaalpunt" value="<?php echo htmlspecialchars($ophaalpunt_from_db->bus); ?>" class="extra-long" /></td>
+			<td><input type="text" name="bus_ophaalpunt" id="bus_ophaalpunt" value="<?php echo htmlspecialchars(str_replace("\'", "'", $ophaalpunt_from_db->bus)); ?>" class="extra-long" /></td>
 		</tr>
 		<tr>
 			<th><label for="postcode_ophaalpunt"><?php echo _("Postcode"); ?></label></th>
-			<td><input type="text" name="postcode_ophaalpunt" id="postcode_ophaalpunt" value="<?php echo htmlspecialchars($ophaalpunt_from_db->postcode); ?>" class="extra-long" /></td>
+			<td><input type="text" name="postcode_ophaalpunt" id="postcode_ophaalpunt" value="<?php echo htmlspecialchars(str_replace("\'", "'", $ophaalpunt_from_db->postcode)); ?>" class="extra-long" /></td>
 		</tr>
 		<tr>
 			<th><label for="plaats_ophaalpunt"><?php echo _("Plaats"); ?></label></th>
-			<td><input type="text" name="plaats_ophaalpunt" id="plaats_ophaalpunt" value="<?php echo htmlspecialchars($ophaalpunt_from_db->plaats); ?>" class="extra-long" /></td>
+			<td><input type="text" name="plaats_ophaalpunt" id="plaats_ophaalpunt" value="<?php echo htmlspecialchars(str_replace("\'", "'", $ophaalpunt_from_db->plaats)); ?>" class="extra-long" /></td>
 		</tr>
 		<tr>
 			<th><label for="land_ophaalpunt"><?php echo _("Land"); ?></label></th>
-			<td><input type="text" name="land_ophaalpunt" id="land_ophaalpunt" value="<?php echo htmlspecialchars($ophaalpunt_from_db->land); ?>" class="extra-long" /></td>
+			<td><input type="text" name="land_ophaalpunt" id="land_ophaalpunt" value="<?php echo htmlspecialchars(str_replace("\'", "'", $ophaalpunt_from_db->land)); ?>" class="extra-long" /></td>
 		</tr>
 		<tr>
 			<th><label for="openingsuren_ophaalpunt"><?php echo _("Openingsuren"); ?></label></th>
-			<td><textarea name="openingsuren_ophaalpunt" id="openingsuren_ophaalpunt" rows="5" cols="30"><?php echo htmlspecialchars($ophaalpunt_from_db->openingsuren); ?></textarea></td>
+			<td><textarea name="openingsuren_ophaalpunt" id="openingsuren_ophaalpunt" rows="5" cols="30"><?php echo htmlspecialchars(str_replace("\'", "'", $ophaalpunt_from_db->openingsuren)); ?></textarea></td>
 		</tr>
 		</table>
 		<h3><?php echo _("Contactgegevens"); ?></h3>
 		<table class="form-table-myrecy">
 		<tr>
 			<th><label for="contactpersoon"><?php echo _("Contactpersoon"); ?></label></th>
-			<td colspan="2"><input type="text" name="contactpersoon" id="contactpersoon" value="<?php echo htmlspecialchars($ophaalpunt_from_db->contactpersoon); ?>" class="extra-long" /></td>
+			<td colspan="2"><input type="text" name="contactpersoon" id="contactpersoon" value="<?php echo htmlspecialchars(str_replace("\'", "'", $ophaalpunt_from_db->contactpersoon)); ?>" class="extra-long" /></td>
 		</tr>
 		<tr>
 			<th><label for="taalvoorkeur"><?php echo _("Taalvoorkeur"); ?></label></th>
@@ -192,13 +192,13 @@ get_header(); the_post(); ?>
 		</tr>
 		<tr>
 			<th><label for="telefoon1"><?php echo _("Telefoon");?></label></th>
-			<td><input type="text" name="telefoon1" id="telefoon1" value="<?php echo htmlspecialchars($ophaalpunt_from_db->telefoonnummer1); ?>" class="regular-text" /></td>
-			<td><input type="text" name="telefoon2" id="telefoon2" value="<?php echo htmlspecialchars($ophaalpunt_from_db->telefoonnummer2); ?>" class="regular-text" /></td>
+			<td><input type="text" name="telefoon1" id="telefoon1" value="<?php echo htmlspecialchars(str_replace("\'", "'", $ophaalpunt_from_db->telefoonnummer1)); ?>" class="regular-text" /></td>
+			<td><input type="text" name="telefoon2" id="telefoon2" value="<?php echo htmlspecialchars(str_replace("\'", "'", $ophaalpunt_from_db->telefoonnummer2)); ?>" class="regular-text" /></td>
 		</tr>
 		<tr>
 			<th><label for="email1"><?php echo _("Email");?></label></th>
-			<td><input type="text" name="email1" id="email1" value="<?php echo htmlspecialchars($ophaalpunt_from_db->email1); ?>" class="regular-text" /></td>
-			<td><input type="text" name="email2" id="email2" value="<?php echo htmlspecialchars($ophaalpunt_from_db->email2); ?>" class="regular-text" /></td>
+			<td><input type="text" name="email1" id="email1" value="<?php echo htmlspecialchars(str_replace("\'", "'", $ophaalpunt_from_db->email1)); ?>" class="regular-text" /></td>
+			<td><input type="text" name="email2" id="email2" value="<?php echo htmlspecialchars(str_replace("\'", "'", $ophaalpunt_from_db->email2)); ?>" class="regular-text" /></td>
 		</tr>
 		<tr>
 			<th><label for="preferredcontact"><?php echo _("Bij voorkeur te contacteren per");?></label></th>
