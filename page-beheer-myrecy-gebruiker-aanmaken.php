@@ -25,7 +25,7 @@ the_post(); ?>
 	<?php
 		require_once("secure/db.php");
 
-        // 1. bestaat er een $_POST, dan heeft de beheerder zich aan een ophaalpunt gelinkt
+        // 1. bestaat er een $_POST, dan heeft de beheerder een nieuwe gebruiker aangemaakt
         //          -> als dat zo is : info wegschrijven naar DB
 
         $ophaalpunt_id_from_form = intval($_POST['telinkenophaalpunt']);
