@@ -19,6 +19,7 @@ get_header();
 the_post(); ?>
 
 <div <?php post_class('post') ?>>
+    <?php include("beheer-menu.php"); ?>
 	<h1 class="entry-title noinfo"><?php the_title(); ?></h1>
 	
 	<div class="content">
