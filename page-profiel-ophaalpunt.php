@@ -35,10 +35,11 @@ get_header(); the_post(); ?>
                 exit;
             }
 
-            // 2. bestaat er een $_POST, dan heeft de gebruiker waarschijnlijk een nieuwe aanmelding gedaan. Security check:
+            // 2. bestaat er een $_POST, dan heeft de gebruiker waarschijnlijk de gegevens van het ophaalpunt gewijzigd. Security check:
             //          -> als dat zo is : info wegschrijven naar DB en $ophaalpunt_from_db herladen met nieuwe informatie
             if(wp_verify_nonce( $_POST["_wpnonce"], 'profiel_wijziging_'.get_current_user_id().$ophaalpunt_from_db->id ))
             {
+                echo "<!-- vvim: POST straat = ".$_POST["straat_ophaalpunt"]."-->";
                 // [A]  _wpnonce klopt => steek de waarden van het formulier in de databank
                 $ophaalpunt_ingevuld_naam = $_POST["naam_ophaalpunt"];
                 $ophaalpunt_ingevuld_kurk = $_POST["kurk_ophaalpunt"]; // als kurk_ophaalpunt niet is aangevinkt dan is de waarde "", maar in SQL wordt dat dan automatisch "0"

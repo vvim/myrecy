@@ -88,3 +88,70 @@ span.ophaalhistoriek-disabled {
 .notify-yellow { background: #fff8c4; border-color: #f7deae; }
 .notify-red { background: #ffecec; border-color: #fad9d7; }
 .notify-green { background: #e9ffd9; border-color: #D1FAB6; }
+
+
+/* administrative module as taken from http://www.devlaspit.be */
+
+#frame-bottom {
+/*  height: 190px; */
+  color: #fff;
+  font-size: 11px;
+}
+
+#frame-bottom h4 {
+  margin: 0 0 1.5em 0;
+  color: #fff;
+}
+
+#frame-bottom a {
+  color: #fff;
+}
+
+#frame-bottom-left {
+  width: 254px;
+}
+
+#frame-bottom-center {
+  width: 579px;
+}
+
+#frame-bottom-left .spacer {
+  margin: 0 0 0 53px;
+}
+
+#frame-bottom-center .spacer {
+  margin: 0 100px 0 0;
+}
+
+#frame-bottom-right {
+  width: 254px;
+}
+
+#frame-bottom-right a {
+  padding: 0 0 2px 0;
+  border-bottom: dotted 1px #fff;
+  text-decoration: none;
+}
+
+#frame-bottom-right li {
+  margin: 0 0 6px 0;
+  text-transform: uppercase;
+}
+
+#frame-bottom-share {
+  margin: 6px 12px 0 51px;
+  height: 12px;
+  overflow: visible;
+}
+
+#frame-bottom-share img {
+  margin: 8px 3px;
+}
+
+#frame-bottom-share .left {
+  float: left;
+}
+
+#frame-bottom-share .right {
+  float: right;
+}

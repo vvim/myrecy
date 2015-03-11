@@ -67,6 +67,17 @@ function user_language()
     return "geen taalvoorkeur";
 }
 
+function MYRECY_Administrator()
+{
+    global $user_ID;
+    global $ADMIN_Wim;
+    global $ADMIN_Geert;
+    $ADMIN_Wim = 1;
+    $ADMIN_Geert = 4;
+	return (($user_ID == $ADMIN_Wim) || ($user_ID == $ADMIN_Geert));
+}
+
+
 // language specifications:
         global $MYRECY_locale;
 
