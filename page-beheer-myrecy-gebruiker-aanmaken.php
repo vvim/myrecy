@@ -126,7 +126,46 @@ the_post(); ?>
                 exit;
             }
     ?>
-	<form action="<?php echo $_SERVER['REQUEST_URI']; ?>" method="post">
+    <script>
+    function random_char(charlist)
+    {
+        var now = new Date();
+        var seed = now.getSeconds();
+        var num = Math.floor(Math.random(seed) * charlist.length);
+        return charlist.charAt(num);
+    }
+
+    function random_pass()
+    {
+        var length_min = 8;
+        var length_max = 12;
+
+        var length = Math.floor(Math.random() * (1 + length_max - length_min)) + length_min;
+
+
+        var chars = "abcdefghijkmnopqrstuvwxyzACDEFGHJKLMNOPQRSTUVWXYZ123456790!&+=";
+
+
+        var pass = "";
+        var i=0;
+
+        for (i=0; i<length; i++)
+        {
+            pass = pass + random_char(chars);
+        }
+
+        return pass;
+    }
+
+    function randomPass()
+    {
+        with (document.generateuser)
+        {
+            password.value = random_pass();
+        }
+    }
+    </script>
+	<form name="generateuser" action="<?php echo $_SERVER['REQUEST_URI']; ?>" method="post">
 
             <p>Gegevens voor de nieuwe MyRecy-gebruiker:</p>
             <table class="form-table-myrecy">
@@ -140,7 +179,8 @@ the_post(); ?>
                     </tr>
                     <tr>
                         <th><label for="email">Wachtwoord</label></th>
-                        <td><input type="text" name="password" id="password" class="extra-long" /></td>
+                        <td><input type="text" name="password" id="password" class="extra-long" />
+                                <input type=button value="Genereer wachtwoord" onClick="randomPass()"></td>
                     </tr>
                     <tr>
                         <th><label for="telinkenophaalpunt">Ophaalpunt</label></th>
