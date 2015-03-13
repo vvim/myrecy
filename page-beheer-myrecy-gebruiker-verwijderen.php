@@ -64,7 +64,7 @@ the_post(); ?>
 
     <p>Selecteer de gebruiker die u wenst te wissen:</p>
 
-    <form action="<?php echo $_SERVER['REQUEST_URI']; ?>"  method="POST">
+    <form action="<?php echo $_SERVER['REQUEST_URI']; ?>"  onsubmit="return confirm_remove_user();" method="POST">
     <?php /* if user_id , then niet schrijven*/ MYRECY_Administrator(); ?>
 
             <select  name="teverwijderengebruiker" id="teverwijderengebruiker">
