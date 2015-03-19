@@ -3,10 +3,14 @@ require_once("myrecy-func.php");
 require_once('login-and-language-check.php');
 $current_user = wp_get_current_user();
 
+        $show_myrecy_message_type = "";
+        $myrecy_message_to_show = "";
+
         // 1. bestaat er een $_POST, dan heeft de gebruiker zijn wachtwoord willen wijzigen een nieuwe gebruiker aangemaakt
         //          -> als dat zo is : info wegschrijven naar DB
         $pw_from_form = $_POST['new_password'];
         $pw_from_form_confirm = $_POST['new_password_confirm'];
+
         if((wp_verify_nonce( $_POST["_wpnonce"], 'wachtwoordwijzigen_'.get_current_user_id().$_SERVER['REQUEST_URI'] )) && (strcmp($pw_from_form, $pw_from_form_confirm) == 0))
         {
             // nonce verified and both passwords are identical
@@ -44,11 +48,13 @@ $current_user = wp_get_current_user();
             $error_or_user = wp_signon(array('user_login' => $username, 'user_password' => $pw_from_form));
             if (is_wp_error($error_or_user))  // return value of wp_signon is WP_Error on failure, or WP_User on success. http://codex.wordpress.org/Function_Reference/wp_signon#Return_Value
             {
-                show_myrecy_message("error", sprintf(_("Kon wachtwoord voor gebruiker %s niet wijzigen, gelieve even te wachten en opnieuw te proberen. Indien het probleem zich blijft voordoen, contacteer ons voor hulp en meld ons de volgende foutboodschap: <em>%s</em>"),$username,$error_or_user->get_error_message()));
+                $show_myrecy_message_type = "error";
+                $myrecy_message_to_show = sprintf(_("Kon wachtwoord voor gebruiker %s niet wijzigen, gelieve even te wachten en opnieuw te proberen. Indien het probleem zich blijft voordoen, contacteer ons voor hulp en meld ons de volgende foutboodschap: <em>%s</em>"),$username,$error_or_user->get_error_message());
             }
             else
             {
-                show_myrecy_message("good", sprintf(_("Wachtwoord voor gebruiker %s gewijzigd."),$username));
+                $show_myrecy_message_type = "good";
+                $myrecy_message_to_show = sprintf(_("Wachtwoord voor gebruiker %s gewijzigd."),$username);
             }
         }
 
@@ -58,7 +64,12 @@ the_post(); ?>
 
 <div <?php post_class('post') ?>>
 	<h1 class="entry-title noinfo"><?php the_title(); ?></h1>
-	
+<?php
+    if (($show_myrecy_message_type != '') && ($myrecy_message_to_show != ''))
+    {
+        show_myrecy_message($show_myrecy_message_type, $myrecy_message_to_show);
+    }
+?>
 	<div class="content">
         <script>
                 <!--
