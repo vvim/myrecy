@@ -68,6 +68,14 @@ the_post(); ?>
     if (($show_myrecy_message_type != '') && ($myrecy_message_to_show != ''))
     {
         show_myrecy_message($show_myrecy_message_type, $myrecy_message_to_show);
+        ?>
+	<div class="content">
+    </div>
+	</div>
+<?php get_footer() ?>
+
+        <?php
+        exit;
     }
 ?>
 	<div class="content">
