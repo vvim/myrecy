@@ -79,7 +79,7 @@ the_post(); ?>
 
         }
 
-        if ($result = $MYRECY_mysqli->query("SELECT * FROM ophaalpunten ORDER BY naam"))
+        if ($result = $MYRECY_mysqli->query("SELECT * FROM ophaalpunten ORDER BY postcode, naam"))
         {
             //printf("Select returned %d rows.\n", $result->num_rows);
             if($result->num_rows < 1)
@@ -101,7 +101,7 @@ the_post(); ?>
             $replace_by = array("'", " ");
             while ($ophaalpunt_from_db = $result->fetch_object())
             {
-                echo "\t<option value=\"$ophaalpunt_from_db->id\">".htmlspecialchars(str_replace($replace_me, $replace_by, $ophaalpunt_from_db->naam))."</option>\n";
+                echo "\t<option value=\"$ophaalpunt_from_db->id\">[".htmlspecialchars(str_replace($replace_me, $replace_by, $ophaalpunt_from_db->postcode))."] ".htmlspecialchars(str_replace($replace_me, $replace_by, $ophaalpunt_from_db->naam))."</option>\n";
             }
 
             echo "\n</select>\n";

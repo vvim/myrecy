@@ -116,7 +116,7 @@ the_post(); ?>
         global $ADMIN_Wim;
         global $ADMIN_Geert;
 
-        if ($result = $MYRECY_mysqli->query("SELECT ophaalpunten.* FROM ophaalpunten WHERE ophaalpunten.id not in (select `ophaalpunt_id` from wordpress_link where wordpress_userid <> $ADMIN_Wim AND wordpress_userid <> $ADMIN_Geert)  ORDER BY naam"))
+        if ($result = $MYRECY_mysqli->query("SELECT ophaalpunten.* FROM ophaalpunten WHERE ophaalpunten.id not in (select `ophaalpunt_id` from wordpress_link where wordpress_userid <> $ADMIN_Wim AND wordpress_userid <> $ADMIN_Geert)  ORDER BY postcode, naam"))
         {
             if($result->num_rows < 1)
             {
@@ -193,7 +193,7 @@ the_post(); ?>
             $replace_by = array("'", " ");
             while ($ophaalpunt_from_db = $result->fetch_object())
             {
-                echo "\t<option value=\"$ophaalpunt_from_db->id\">".htmlspecialchars(str_replace($replace_me, $replace_by, $ophaalpunt_from_db->naam))."</option>\n";
+                echo "\t<option value=\"$ophaalpunt_from_db->id\">[".htmlspecialchars(str_replace($replace_me, $replace_by, $ophaalpunt_from_db->postcode))."] ".htmlspecialchars(str_replace($replace_me, $replace_by, $ophaalpunt_from_db->naam))."</option>\n";
             }
 
             echo "\n</select>\n";
