@@ -1,0 +1,551 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: MyRecy v0.1-20150206\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2015-03-25 09:52+0100\n"
+"PO-Revision-Date: \n"
+"Last-Translator: Wim <wim@tamale.nl>\n"
+"Language-Team: \n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-Language: French\n"
+"X-Poedit-Country: BELGIUM\n"
+"X-Poedit-SourceCharset: utf-8\n"
+"X-Poedit-Basepath: /home/wim/coding/myrecy/2-myrecy-wordpress-origami-myrecy/\n"
+"X-Poedit-SearchPath-0: .\n"
+
+#: page-profiel-ophaalpunt.php:22
+#: page-profiel-ophaalpunt.php:96
+#: page-ophaalhistoriek.php:157
+msgid "Geen ophaalpunt gelinkt aan je gebruikersnaam, contacteer ons voor hulp."
+msgstr "Il n'y a pas un centre de récolte lié avec votre nom d'utilisateur; contactez-nous pour de l'aide."
+
+#: page-profiel-ophaalpunt.php:34
+#: page-profiel-ophaalpunt.php:108
+#: page-gethistoriek.php:147
+#: page-ophaalhistoriek.php:168
+msgid "De MyRecy-databank is momenteel niet bereikbaar, gelieve even te wachten en opnieuw te proberen. Indien het probleem zich blijft voordoen, contacteer ons voor hulp."
+msgstr "La base de données MyRecy n'est pas disponible pour le moment; réessayez dans un instant. Si le problème persiste, contactez-nous pour de l'aide."
+
+#: page-profiel-ophaalpunt.php:80
+msgid "Wijzigingen in het profiel zijn doorgegeven aan De Vlaspit."
+msgstr "Les changements dans le profil ont été transmis à De Vlaspit."
+
+#: page-profiel-ophaalpunt.php:84
+msgid "De wijzigingen zijn niet doorgegeven aan De Vlaspit. De databank gaf volgende foutmelding: "
+msgstr "Les changements dans le profil n'ont pas été transmis à De Vlaspit. La base de données signalait la faute suivante: "
+
+#: page-profiel-ophaalpunt.php:118
+msgid "Adres ophaalpunt"
+msgstr "Adresse centre de récolte"
+
+#: page-profiel-ophaalpunt.php:121
+#: page-ophaalhistoriek.php:218
+#: page-ophaalhistoriek.php:227
+msgid "Naam ophaalpunt"
+msgstr "Nom centre de récolte"
+
+#: page-profiel-ophaalpunt.php:125
+msgid "Straat"
+msgstr "Rue"
+
+#: page-profiel-ophaalpunt.php:129
+msgid "Huisnummer"
+msgstr "Numéro"
+
+#: page-profiel-ophaalpunt.php:133
+msgid "Bus"
+msgstr "Boîte"
+
+#: page-profiel-ophaalpunt.php:137
+msgid "Postcode"
+msgstr "Code postal"
+
+#: page-profiel-ophaalpunt.php:141
+#: page-ophaalhistoriek.php:222
+#: page-ophaalhistoriek.php:228
+msgid "Plaats"
+msgstr "Commune"
+
+#: page-profiel-ophaalpunt.php:145
+msgid "Land"
+msgstr "Pays"
+
+#: page-profiel-ophaalpunt.php:149
+msgid "Openingsuren"
+msgstr "Heures d'ouverture"
+
+#: page-profiel-ophaalpunt.php:153
+msgid "Contactgegevens"
+msgstr "Contact"
+
+#: page-profiel-ophaalpunt.php:156
+msgid "Contactpersoon"
+msgstr "Personne à contacter"
+
+#: page-profiel-ophaalpunt.php:160
+msgid "Taalvoorkeur"
+msgstr "Langue de préférence"
+
+#: page-profiel-ophaalpunt.php:169
+msgid "Geen taalvoorkeuren gevonden in de databank, contacteer ons voor hulp."
+msgstr "Pas trouvé la langue de préférence; contactez-nous pour de l'aide."
+
+#: page-profiel-ophaalpunt.php:185
+msgid "De MyRecy-databank is momenteel niet bereikbaar, dus kan de taalvoorkeuren niet opzoeken. Gelieve even te wachten en opnieuw te proberen. Indien het probleem zich blijft voordoen, contacteer ons voor hulp."
+msgstr "La base de données MyRecy n'est pas disponible pour le moment et ne peut pas chercher la langue de préférence; réessayez dans un instant. Si le problème persiste, contactez-nous pour de l'aide."
+
+#: page-profiel-ophaalpunt.php:192
+msgid "De voorkeurtaal bepaalt de taal van deze pagina’s."
+msgstr "La langue de préférence détermine la langue de ces pages-ci."
+
+#: page-profiel-ophaalpunt.php:195
+msgid "Telefoon"
+msgstr "Téléphone"
+
+#: page-profiel-ophaalpunt.php:200
+msgid "Email"
+msgstr "Email"
+
+#: page-profiel-ophaalpunt.php:205
+msgid "Bij voorkeur te contacteren per"
+msgstr "Contacter de préférence par"
+
+#: page-profiel-ophaalpunt.php:214
+msgid "Geen contactvoorkeuren gevonden in de databank, contacteer ons voor hulp."
+msgstr "Pas trouvé contact de préférence; contactez-nous pour de l'aide."
+
+#: page-profiel-ophaalpunt.php:230
+msgid "De MyRecy-databank is momenteel niet bereikbaar, dus kan de contacteervoorkeuren niet opzoeken. Gelieve even te wachten en opnieuw te proberen. Indien het probleem zich blijft voordoen, contacteer ons voor hulp."
+msgstr "La base de données MyRecy n'est pas disponible pour le moment et ne peut pas chercher le contact de préférence; réessayez dans un instant. Si le problème persiste, contactez-nous pour de l'aide."
+
+#: page-profiel-ophaalpunt.php:240
+#: page-profiel-ophaalpunt.php:243
+msgid "Soort ophaalpunt"
+msgstr "Type de centre de récolte"
+
+#: page-profiel-ophaalpunt.php:252
+msgid "Geen soorten gevonden in de databank, contacteer ons voor hulp."
+msgstr "Pas trouvé le type de centre de récolte; contactez-nous pour de l'aide."
+
+#: page-profiel-ophaalpunt.php:271
+#: page-profiel-ophaalpunt.php:302
+#: page-profiel-ophaalpunt.php:348
+msgid "De MyRecy-databank is momenteel niet bereikbaar, dus kan de soorten ophaalpunten niet opzoeken. Gelieve even te wachten en opnieuw te proberen. Indien het probleem zich blijft voordoen, contacteer ons voor hulp."
+msgstr "La base de données MyRecy n'est pas disponible pour le moment et ne peut pas chercher le type de centre de récolte; réessayez dans un instant. Si le problème persiste, contactez-nous pour de l'aide."
+
+#: page-profiel-ophaalpunt.php:286
+msgid "Geen intercommunales gevonden in de databank, contacteer ons voor hulp."
+msgstr "Pas trouvé d'intercommunale; contactez-nous pour de l'aide."
+
+#: page-profiel-ophaalpunt.php:311
+msgid "Ingezamelde afvalstof"
+msgstr "Déchet récolté"
+
+#: page-profiel-ophaalpunt.php:313
+#: page-ophaalhistoriek.php:33
+#: page-ophaalhistoriek.php:235
+#: page-ophaalhistoriek.php:251
+msgid "kurk"
+msgstr "bouchons en liège"
+
+#: page-profiel-ophaalpunt.php:316
+#: page-ophaalhistoriek.php:33
+#: page-ophaalhistoriek.php:42
+#: page-ophaalhistoriek.php:240
+#: page-ophaalhistoriek.php:259
+msgid "kaarsresten"
+msgstr "fonds de bougies"
+
+#: page-profiel-ophaalpunt.php:320
+msgid "Attest nodig?"
+msgstr "Besoin d'une attestation?"
+
+#: page-profiel-ophaalpunt.php:322
+msgid "ja"
+msgstr "oui"
+
+#: page-profiel-ophaalpunt.php:332
+msgid "Geen frequenties gevonden in de databank, contacteer ons voor hulp."
+msgstr "Pas trouvé de periode; contactez-nous pour de l'aide."
+
+#: page-profiel-ophaalpunt.php:359
+msgid "Wijzigingen opslaan"
+msgstr "Saufgarder les changements"
+
+#: page-35.php:12
+msgid "<b>MyRecy</b> is de gepersonaliseerde website voor ophaalpunten van <b>kurk</b> en/of <b>kaarsresten</b>."
+msgstr "<b>MyRecy</b> est l'espace personalisée pour centres de récolte de <b>bouchons en liège</b> ou <b>fonds de bougies</b>."
+
+#: page-35.php:13
+msgid "U kan door deze website navigeren via het menu dat u bovenaan deze pagina vindt:"
+msgstr "Vous pouvez naviger dans cette espace par le menu que vous trouvez en haut de cette page:"
+
+#: page-35.php:15
+#, php-format
+msgid "indien u uw persoonlijke gegevens wilt nakijken of aanpassen, ga dan naar %s;"
+msgstr "pour controler les coordonnées de votre organisation, choisissez %s;"
+
+#: page-35.php:15
+#: functions.php:140
+msgid "Profiel"
+msgstr "Profil"
+
+#: page-35.php:16
+#, php-format
+msgid "om door te geven hoeveel zakken kurk en/of kaarsresten u momenteel in stock heeft, klikt u op %s;"
+msgstr "pour passer la quantité de bouchons/bougies récoltée à De Vlaspit, choisissez %s;"
+
+#: page-35.php:16
+#: functions.php:146
+msgid "Stock"
+msgstr "Stock"
+
+#: page-35.php:17
+#, php-format
+msgid "als u een overzicht wenst van de eigen ingezamelde/opgehaalde hoeveelheden (en eventueel attesten) : %s;"
+msgstr "pour obtenir un aperçu des récoltes qui ont été reprises par De Vlaspit, choisissez %s;"
+
+#: page-35.php:17
+msgid "Historiek"
+msgstr "Aperçu des récoltes"
+
+#: page-35.php:18
+#, php-format
+msgid "u kan ook De Vlaspit rechtstreeks contacteren via het %s;"
+msgstr "pour contacter directement De Vlaspit, choisissez %s;"
+
+#: page-35.php:18
+msgid "Contactformulier"
+msgstr "Contact"
+
+#: page-35.php:19
+#, php-format
+msgid "wanneer u klaar bent, klikt u op %s."
+msgstr "pour clôturer, choisissez %s."
+
+#: page-35.php:19
+#: functions.php:125
+msgid "Afmelden"
+msgstr "Déconnecter"
+
+#: functions.php:24
+msgid "Online module voor ophaalpunten De Vlaspit"
+msgstr "Espace en ligne pour centres de récolte de bouchons (en liège) ou fonds de bougies"
+
+#: functions.php:57
+msgid "Nederlands"
+msgstr "néerlandais"
+
+#: functions.php:60
+msgid "Frans"
+msgstr "français"
+
+#: functions.php:63
+msgid "Duits"
+msgstr "allemand"
+
+#: functions.php:66
+msgid "Engels"
+msgstr "anglais"
+
+#: functions.php:69
+msgid "mail"
+msgstr "mail"
+
+#: functions.php:72
+msgid "telefoon"
+msgstr "téléphone"
+
+#: functions.php:75
+msgid "sms"
+msgstr "messagerie"
+
+#: functions.php:78
+msgid "post"
+msgstr "poste"
+
+#: functions.php:81
+msgid "intercommunale"
+msgstr "intercommunale"
+
+#: functions.php:84
+msgid "gemeente"
+msgstr "commune"
+
+#: functions.php:87
+msgid "kantoor/administratie/bedrijf"
+msgstr "bureau/administration/entreprise"
+
+#: functions.php:90
+msgid "organisatie"
+msgstr "organisation"
+
+#: functions.php:93
+msgid "winkel"
+msgstr "magasin"
+
+#: functions.php:96
+msgid "school/universiteit"
+msgstr "école/université"
+
+#: functions.php:99
+msgid "particulier"
+msgstr "particulier"
+
+#: functions.php:102
+msgid "horeca"
+msgstr "horeca"
+
+#: functions.php:105
+msgid "maandelijks"
+msgstr "par mois"
+
+#: functions.php:108
+msgid "per kwartaal"
+msgstr "par trimestre"
+
+#: functions.php:111
+msgid "jaarlijks"
+msgstr "par an"
+
+#: functions.php:137
+msgid "Welkom bij MyRecy"
+msgstr "Bienvenu chez MyRecy"
+
+#: functions.php:143
+msgid "Ophaalhistoriek"
+msgstr "Aperçu des récoltes"
+
+#: functions.php:149
+msgid "Contact"
+msgstr "Contact"
+
+#: functions.php:152
+msgid "Wachtwoord wijzigen"
+msgstr "Changer mot de passe"
+
+#: page-beheer-myrecy-gebruiker-aanmaken.php:41
+#: page-beheer-ophaalpunt-linken-uzelf.php:41
+#, php-format
+msgid "Probleem met de databank (error %d) bij opzoeken van ophaalpunt %d : %s."
+msgstr ""
+
+#: page-beheer-myrecy-gebruiker-aanmaken.php:49
+#: page-beheer-ophaalpunt-linken-uzelf.php:49
+#, php-format
+msgid "Ophaalpunt %d bestaat niet."
+msgstr ""
+
+#: page-beheer-myrecy-gebruiker-aanmaken.php:71
+#, php-format
+msgid "Gebruiker %s ( %s ) bestaat al."
+msgstr ""
+
+#: page-beheer-myrecy-gebruiker-aanmaken.php:80
+#, php-format
+msgid "Kan setting <em>%s</em> voor gebruiker %s niet op <em>false</em> zetten. Contacteer Wim aub."
+msgstr ""
+
+#: page-beheer-myrecy-gebruiker-aanmaken.php:93
+#, php-format
+msgid "Nieuwe gebruiker <strong>%s</strong> aangemaakt en gelinkt aan ophaalpunt %d: <em>%s</em>. Het wachtwoord is <em>%s</em>"
+msgstr ""
+
+#: page-beheer-myrecy-gebruiker-aanmaken.php:97
+#: page-beheer-ophaalpunt-linken-uzelf.php:75
+#, php-format
+msgid "Probleem met de databank (error %d) bij het linken van gebruiker %s aan ophaalpunt %d: <em>%s</em>: %s"
+msgstr ""
+
+#: page-beheer-myrecy-gebruiker-aanmaken.php:124
+#: page-beheer-ophaalpunt-linken-uzelf.php:88
+msgid "Geen ophaalpunten gevonden."
+msgstr "Pas de locations trouvés."
+
+#: page-beheer-myrecy-gebruiker-aanmaken.php:210
+msgid "Nieuwe gebruiker aanmaken"
+msgstr ""
+
+#: page-gethistoriek.php:26
+#, php-format
+msgid "1e kwartaal %d"
+msgstr "1er trimestre %d"
+
+#: page-gethistoriek.php:32
+#, php-format
+msgid "2e kwartaal %d"
+msgstr "2ème trimestre %d"
+
+#: page-gethistoriek.php:38
+#, php-format
+msgid "3e kwartaal %d"
+msgstr "3ème trimestre %d"
+
+#: page-gethistoriek.php:44
+#, php-format
+msgid "4e kwartaal %d"
+msgstr "4ème trimestre %d"
+
+#: page-gethistoriek.php:104
+#, php-format
+msgid "Historiek ophalingen %s voor %s."
+msgstr "Aperçu des récoltes de %s pour la période %s"
+
+#: page-gethistoriek.php:109
+msgid "Geen ophalingen gevonden."
+msgstr "Pas de résultats trouvés."
+
+#: page-gethistoriek.php:118
+msgid "ophalingsdatum"
+msgstr "date de la reprise"
+
+#: page-gethistoriek.php:118
+msgid "zakken"
+msgstr "sacs"
+
+#: page-gethistoriek.php:118
+msgid "kg"
+msgstr "kilos"
+
+#: page-gethistoriek.php:142
+#, php-format
+msgid "%d ophalingen in totaal voor <strong>%d</strong> zakken en %d kilogram."
+msgstr "%d reprise(s) pour un total de <strong>%d</strong> sacs et %d kilos."
+
+#: page-beheer-ophaalpunt-linken-uzelf.php:71
+#, php-format
+msgid "Gebruiker %s is nu gelinkt aan ophaalpunt %d: <em>%s</em>"
+msgstr ""
+
+#: page-beheer-ophaalpunt-linken-uzelf.php:114
+msgid "Ophaalpunt linken"
+msgstr ""
+
+#: page-ophaalhistoriek.php:64
+#: page-ophaalhistoriek.php:72
+#, php-format
+msgid "geen historiek voor %s\n"
+msgstr "Pas d'aperçu disponible pour %s\n"
+
+#: page-ophaalhistoriek.php:121
+#, php-format
+msgid "%de kwartaal %s"
+msgstr "%d trimestre %s"
+
+#: page-ophaalhistoriek.php:265
+msgid "Geef een periode op voor kurk en/of kaarsresten en daarna zal de ophaalhistoriek verschijnen."
+msgstr "Introduisez une periode pour bouchons ou bougies; après cela un aperçu va apparaître."
+
+#: page-wachtwoord-wijzigen.php:52
+#, php-format
+msgid "Kon wachtwoord voor gebruiker %s niet wijzigen, gelieve even te wachten en opnieuw te proberen. Indien het probleem zich blijft voordoen, contacteer ons voor hulp en meld ons de volgende foutboodschap: <em>%s</em>"
+msgstr "Pas possible de changer le mot de passe pour l’utilisateur %s; veuillez patienter un moment et réessayer dans un instant. Si le problème persiste, contactez-nous en spécifiant le message d’erreur suivant: <em>%s</em>"
+
+#: page-wachtwoord-wijzigen.php:57
+#, php-format
+msgid "Wachtwoord voor gebruiker %s gewijzigd."
+msgstr "Le mot de passe pour l’utilisateur %s a été changé."
+
+#: page-wachtwoord-wijzigen.php:93
+msgid "De wachtwoorden komen niet overeen, probeer opnieuw."
+msgstr "Les mots de passe ne correspondent pas, essayez à nouveau, svp."
+
+#: page-wachtwoord-wijzigen.php:102
+msgid "Nieuw wachtwoord"
+msgstr "Nouveau mot de passe"
+
+#: page-wachtwoord-wijzigen.php:106
+msgid "Bevestig het nieuwe wachtwoord"
+msgstr "Confirmez le nouveau mot de passe, svp"
+
+#: page-stock.php:40
+msgid "Geen ophaalpunt gevonden dat overeenkomt met uw gebruikersnaam, stock is niet doorgegeven aan De Vlaspit. Gelieve even te wachten en opnieuw te proberen. Indien het probleem zich blijft voordoen, contacteer ons voor hulp."
+msgstr "Il n'y a pas un centre de récolte lié avec votre nom d'utilisateur; le stock n'a pas été transferré à De Vlaspit. Réessayez dans un instant. Si le problème persiste, contactez-nous pour de l'aide."
+
+#: page-stock.php:79
+#, php-format
+msgid "Hoeveelheden zijn doorgegeven aan De Vlaspit: %d zakken kurk (%d kg) en %d zakken kaarsresten (%d kg)."
+msgstr "Les quantités ont été transferrées à De Vlaspit: %d sacs de bouchons (%d kilos) et %d sacs de bougies (%d kilos)."
+
+#: page-stock.php:84
+msgid "De hoeveelheden zijn niet doorgegeven aan De Vlaspit. De databank gaf volgende foutmelding: "
+msgstr "Les quantités n'ont pas été transferrées à De Vlaspit. La base de données signale la faute suivante: "
+
+#: page-stock.php:95
+msgid "Geen hoeveelheden opgegeven, stock is niet doorgegeven aan De Vlaspit."
+msgstr "Pas de quantités indiquées, le stock n'a pas été transferré à De Vlaspit."
+
+#: page-stock.php:100
+msgid "Geen verbinding kunnen maken met de databank, de hoeveelheden zijn niet doorgegeven aan De Vlaspit.  Gelieve even te wachten en opnieuw te proberen. Indien het probleem zich blijft voordoen, contacteer ons voor hulp."
+msgstr "La base de données MyRecy n'est pas disponible pour le moment, les quantités ne sont pas transferrées à De Vlaspit. Réessayez dans un instant. Si le problème persiste, contactez-nous pour de l'aide."
+
+#: page-stock.php:110
+msgid "Nog geen aanmelding gevonden, je kan hieronder een nieuwe aanmelding ingeven."
+msgstr "Le système n’a pas enrégistré des quantités à reprendre en ce moment. Veuillez introduire ci-dessous les quantités à reprendre prochainement."
+
+#: page-stock.php:125
+#, php-format
+msgid "Op %s heeft u %d zakken kurk en %d zakken kaarsresten aangemeld, maar deze zijn nog niet gepland in een ophaalronde. Wilt u deze aantallen nog actualiseren?"
+msgstr "A la date du %s vous avez enrégistré un stock de %d sacs de bouchons et %d sacs de bougies, mais De Vlaspit n’a pas encore plannifié la reprise de ces quantités. Voulez-vous actualiser ces quantités?"
+
+#: page-stock.php:148
+#, php-format
+msgid "%s heeft momenteel het volgende in stock:"
+msgstr "En ce moment les quantités suivantes sont en stock chez %s:"
+
+#: page-stock.php:152
+msgid "Kurk"
+msgstr "Bouchons en liège"
+
+#: page-stock.php:154
+#: page-stock.php:159
+msgid "kilogram"
+msgstr "kilos"
+
+#: page-stock.php:157
+msgid "Kaarsresten"
+msgstr "Fonds de bougies"
+
+#: page-stock.php:162
+msgid "Opmerkingen"
+msgstr "Remarques"
+
+#: page-stock.php:167
+msgid "Stock doorgeven aan De Vlaspit"
+msgstr "Passer le stock à De Vlaspit"
+
+#: page-stock.php:170
+msgid "U kunt ofwel het aantal zakken ofwel het aantal kilo invoeren, of beide."
+msgstr "Vous pouvez introduire le nombre de sacs ou le nombre de kilos, ou les deux."
+
+#: page-beheer-myrecy-gebruiker-verwijderen.php:38
+#, php-format
+msgid "Gebruiker %s verwijderd"
+msgstr ""
+
+#: page-beheer-myrecy-gebruiker-verwijderen.php:40
+#, php-format
+msgid "Er ging iets mis bij het verwijderen van gebruiker %s - met id %d  , contacteer Wim met deze foutmelding."
+msgstr ""
+
+#: page-beheer-myrecy-gebruiker-verwijderen.php:50
+msgid "Geen gebruikers gevonden."
+msgstr "Pas de utilisateurs trouvés."
+
+#: page-beheer-myrecy-gebruiker-verwijderen.php:92
+#, php-format
+msgid "Geen gebruikersdata gevonden voor gebruiker %d , contacteer Wim met deze foutmelding."
+msgstr ""
+
+#: page-beheer-myrecy-gebruiker-verwijderen.php:108
+msgid "Verwijder gebruiker"
+msgstr ""
+
+#~ msgid "Materiaal"
+#~ msgstr "Matériel"
+#~ msgid "Je bent nu uitgelogd."
+#~ msgstr "Vous n'êtes plus en ligne (déconnecté)"
+
