@@ -90,7 +90,7 @@ the_post(); ?>
 
             if($statement->execute())
             {
-                show_myrecy_message("good", sprintf(_("Gebruiker %s is nu gelinkt aan ophaalpunt %d: <em>%s</em>"),$user_name,$user_id, $ophaalpunt_from_db->naam));
+                show_myrecy_message("good", sprintf(_("Nieuwe gebruiker <strong>%s</strong> aangemaakt en gelinkt aan ophaalpunt %d: <em>%s</em>. Het wachtwoord is <em>%s</em>"),$user_name,$user_id, $ophaalpunt_from_db->naam, $user_password));
             }
             else
             {
