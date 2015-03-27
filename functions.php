@@ -36,7 +36,7 @@ function pippin_gettext_demo($translated_text, $text , $domain)
             return 'Inloggen / Connectez-vous';
             break;
         case 'Lost Password':
-            return 'Wachtwoord verloren / Mot de passe oublié';
+            return 'Wachtwoord vergeten / Mot de passe oublié';
             break;
         case 'Voer a.u.b. je gebruikersnaam of e-mailadres in. Je ontvangt per e-mail een link waarmee je een nieuw wachtwoord kunt aanmaken.':
             return 'Voer a.u.b. je gebruikersnaam of e-mailadres in. Je ontvangt per e-mail een link waarmee je een nieuw wachtwoord kunt aanmaken.<br/>Introduisez votre nom d\'utilisateur ou votre adresse email. Vous recevrez un lien par mail qui vous permettra de former un mot de passe nouveau';
