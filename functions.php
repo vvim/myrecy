@@ -128,10 +128,7 @@ function translate_title( $title, $id = null )
             return "Log in / Connection"; // gettext is not useful as the locale is not known at this point.
             break;
         case 'Lost Password':
-            return 'Wachtwoord verloren / Mot de passe oublié';
-            break;
-        case 'Lost Password':
-            return 'Wachtwoord verloren / Mot de passe oublié';
+            return 'Wachtwoord vergeten / Mot de passe oublié';
             break;
         case 'Welkom bij MyRecy':
             return _('Welkom bij MyRecy');
