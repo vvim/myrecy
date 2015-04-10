@@ -47,9 +47,6 @@ function pippin_gettext_demo($translated_text, $text , $domain)
         case 'Nieuw wachtwoord aanmaken':
             return 'Nieuw wachtwoord aanvragen / Nouveau mot de passe';
             break;
-        case '<strong>MISLUKT</strong>: Ongeldige gebruikersnaam of e-mailadres.':
-            return '<strong>MISLUKT</strong>: Ongeldige gebruikersnaam of e-mailadres.<br/><strong>ERREUR</strong>: le nom d\'utilisateur ou l\'adresse email n\'est pas correcte';
-            break;
         case 'Controleer je e-mail voor de bevestigingslink.':
             return 'Controleer je e-mail voor de bevestigingslink.<br/>Controlez vos mails pour retrouver le lien pour affirmer votre mot de passe';
             break;
