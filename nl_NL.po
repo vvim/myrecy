@@ -1169,7 +1169,7 @@ msgstr "Het query argument %s moet een waarde bevatten."
 
 #: wp-includes/user.php:2100
 msgid "Hint: The password should be at least seven characters long. To make it stronger, use upper and lower case letters, numbers, and symbols like ! \" ? $ % ^ &amp; )."
-msgstr "Hint: het wachtwoord moet minimaal zeven tekens lang zijn. Om het sterker te maken, gebruik hoofd- en kleine letters, nummers en tekens zoals ! \" ? $ % ^ &amp; )."
+msgstr "Hint: het wachtwoord moet minimaal zeven tekens lang zijn. Om het sterker te maken, gebruik hoofd- en kleine letters, nummers en tekens zoals ! \" ? $ % ^ &amp; ).<br>Astuce&nbsp;: Le mot de passe devrait contenir au moins 7 caractères. Pour le rendre plus fort, utilisez des majuscules et des minuscules, des nombres et des symboles tels que ! \" ? $ % ^ &amp; )."
 
 #: wp-includes/media-template.php:1146
 msgid "Poster Image"
@@ -3524,44 +3524,44 @@ msgstr "Thumbnailbreedte"
 
 #: wp-login.php:362
 msgid "Someone requested that the password be reset for the following account:"
-msgstr "Iemand heeft verzocht om het wachtwoord van het volgende account opnieuw in te stellen:"
+msgstr "Iemand heeft verzocht om het wachtwoord van het volgende account opnieuw in te stellen:\nQuelqu'un a demandé le renouvellement de son mot de passe pour le compte suivant:"
 
 #: wp-login.php:365
 msgid "If this was a mistake, just ignore this email and nothing will happen."
-msgstr "Als dit een vergissing was, kun je deze e-mail negeren en zal er niets gebeuren."
+msgstr "Als dit een vergissing was, kun je deze e-mail negeren en zal er niets gebeuren.\nS'il s'agit d'une erreur, ignorez ce message et la demande ne sera pas prise en compte."
 
 #: wp-login.php:622
 msgid "Enter your new password below."
-msgstr "Voer hieronder je nieuwe wachtwoord in."
+msgstr "Voer hieronder je nieuwe wachtwoord in.<br>Veuillez saisir votre nouveau mot de passe ci-dessous."
 
 #: wp-login.php:629
 msgid "New password"
-msgstr "Nieuw wachtwoord"
+msgstr "Nieuw wachtwoord / Nouveau mot de passe"
 
 #: wp-login.php:633
 msgid "Confirm new password"
-msgstr "Nieuw wachtwoord bevestigen"
+msgstr "Nieuw wachtwoord bevestigen / Confirmer le nouveau mot de passe"
 
 #: wp-login.php:599
 msgid "The passwords do not match."
-msgstr "De wachtwoorden komen niet overeen."
+msgstr "De wachtwoorden komen niet overeen.<br>Vos mots de passe ne correspondent pas."
 
 #: wp-login.php:366
 msgid "To reset your password, visit the following address:"
-msgstr "Ga naar dit adres om je wachtwoord opnieuw in te stellen:"
+msgstr "Ga naar dit adres om je wachtwoord opnieuw in te stellen:\nPour renouveler votre mot de passe, cliquez sur le lien suivant:"
 
 #: wp-login.php:622
 #: wp-login.php:652
 msgid "Reset Password"
-msgstr "Wachtwoord opnieuw instellen"
+msgstr "Wachtwoord opnieuw instellen / Réinitialiser le mot de passe"
 
 #: wp-login.php:614
 msgid "Password Reset"
-msgstr "Wachtwoord opnieuw instellen"
+msgstr "Wachtwoord opnieuw instellen / Réinitialiser le mot de passe"
 
 #: wp-login.php:614
 msgid "Your password has been reset."
-msgstr "Je wachtwoord is opnieuw ingesteld."
+msgstr "Je wachtwoord is opnieuw ingesteld.<br>Votre mot de passe a été réinitialisé."
 
 #: wp-includes/post-formats.php:68
 msgid "Invalid post"
@@ -4160,7 +4160,7 @@ msgstr "Als uitgelichte afbeelding gebruiken"
 
 #: wp-includes/script-loader.php:349
 msgid "Mismatch"
-msgstr "Verkeerde combinatie"
+msgstr "Verkeerde combinatie / Incohérence"
 
 #: wp-includes/general-template.php:870
 msgid "Page %s"
@@ -5381,7 +5381,7 @@ msgstr "[%s] Wachtwoord kwijt/gewijzigd"
 #: wp-includes/pluggable.php:1651
 #: wp-login.php:364
 msgid "Username: %s"
-msgstr "Gebruikersnaam: %s"
+msgstr "Gebruikersnaam / Nom de l'utilisateur: %s"
 
 #: wp-includes/pluggable.php:1646
 msgid "[%s] New User Registration"
@@ -5564,7 +5564,7 @@ msgstr "verplaatst naar de prullenbak."
 #: wp-includes/script-loader.php:347
 msgctxt "password strength"
 msgid "Medium"
-msgstr "Gemiddeld"
+msgstr "Gemiddeld / Moyenne"
 
 #: wp-includes/script-loader.php:444
 msgid "Publish on:"
@@ -5672,7 +5672,7 @@ msgstr "<strong>MISLUKT</strong>: Het e-mailadres is onjuist."
 
 #: wp-login.php:528
 msgid "Lost Password"
-msgstr "Wachtwoord kwijt"
+msgstr "Wachtwoord kwijt / Mot de passe oublié"
 
 #: wp-login.php:536
 msgid "Username or E-mail:"
@@ -5680,7 +5680,7 @@ msgstr "Gebruikersnaam of e-mailadres:"
 
 #: wp-login.php:547
 msgid "Get New Password"
-msgstr "Nieuw wachtwoord aanmaken"
+msgstr "Nieuw wachtwoord aanmaken / Générer un mot de passe"
 
 #: wp-login.php:219
 msgid "Are you lost?"
@@ -5877,11 +5877,11 @@ msgstr "<strong>MISLUKT:</strong> WordPress %1$s vereist MySQL %2$s of hoger"
 
 #: wp-login.php:282
 msgid "<strong>ERROR</strong>: There is no user registered with that email address."
-msgstr "<strong>MISLUKT</strong>: Er is geen gebruiker geregistreerd met dit e-mailadres."
+msgstr "<strong>MISLUKT</strong>: Er is geen gebruiker geregistreerd met dit e-mailadres.<br><strong>ERREUR</strong>: Il n&rsquo;y aucun utilisateur enregistré avec cette adresse de messagerie."
 
 #: wp-login.php:299
 msgid "<strong>ERROR</strong>: Invalid username or e-mail."
-msgstr "<strong>MISLUKT</strong>: Ongeldige gebruikersnaam of e-mailadres."
+msgstr "<strong>MISLUKT</strong>: Ongeldige gebruikersnaam of e-mailadres.<br><strong>ERREUR</strong>: Le nom de l'utilisateur ou l'adresse de messagerie n'est pas valide."
 
 #: wp-includes/class-wp-editor.php:884
 msgid "Print"
@@ -5939,7 +5939,7 @@ msgstr "&laquo; Oudere reacties"
 
 #: wp-login.php:278
 msgid "<strong>ERROR</strong>: Enter a username or e-mail address."
-msgstr "<strong>MISLUKT</strong>: Geef een gebruikersnaam of e-mailadres."
+msgstr "<strong>MISLUKT</strong>: Geef een gebruikersnaam of e-mailadres.<br><strong>ERREUR</strong>: Veuillez saisir une adresse de messagerie ou un nom de l'utilisateur."
 
 #: wp-includes/default-widgets.php:102
 msgid "Page IDs, separated by commas."
@@ -6151,7 +6151,7 @@ msgstr[1] "%s uur"
 
 #: wp-login.php:506
 msgid "Sorry, that key does not appear to be valid."
-msgstr "Deze sleutel lijkt ongeldig te zijn."
+msgstr "Deze sleutel lijkt ongeldig te zijn.<br>Désolé, cette clé ne semble pas être valide."
 
 #: wp-includes/ms-functions.php:512
 #: wp-includes/user.php:1787
@@ -6488,7 +6488,7 @@ msgstr "(verplicht)"
 #: wp-includes/script-loader.php:343
 #: wp-login.php:637
 msgid "Strength indicator"
-msgstr "Sterkte-indicator"
+msgstr "Sterkte-indicator / Indicateur de sûreté"
 
 #: wp-includes/admin-bar.php:687
 #: wp-includes/class-wp-customize-widgets.php:437
@@ -6659,15 +6659,15 @@ msgstr "Eerste bericht"
 
 #: wp-includes/script-loader.php:344
 msgid "Very weak"
-msgstr "Heel zwak"
+msgstr "Heel zwak / Très faible"
 
 #: wp-includes/script-loader.php:345
 msgid "Weak"
-msgstr "Zwak"
+msgstr "Zwak / Faible"
 
 #: wp-includes/script-loader.php:348
 msgid "Strong"
-msgstr "Sterk"
+msgstr "Sterk / Forte"
 
 #: wp-includes/comment-template.php:2184
 msgid "Email"
@@ -7099,7 +7099,7 @@ msgstr "Rechts"
 #: wp-includes/media-template.php:924
 #: wp-includes/media.php:2680
 msgid "Medium"
-msgstr "Gemiddeld"
+msgstr "Gemiddeld / Moyenne"
 
 #: wp-includes/media-template.php:665
 #: wp-includes/media-template.php:739
