@@ -93,27 +93,49 @@ function show_myrecy_message($style, $message)
 	require_once("secure/db.php");
 
 
+
+
+    $CSVrows = 0;
+    if (($handle = fopen("/tmp/users.csv", "r")) !== FALSE)
+    {
+
+        while (($data = fgetcsv($handle, 1000, ",")) !== FALSE)
+        {
+            $ophaalpunten[] = $data[1];
+            $usernames[] =  $data[7];
+            $emails[] = $data[4];
+            $passwords[] = $data[8];
+            //echo "ophaalpunt_id {$data[1]}, gebruiker {$data[7]}, wachtwoord {$data[8]}, email {$data[4]}<br>\n";
+            $CSVrows++;
+
+        }
+        //echo "handled $CSVrows rows";
+        fclose($handle);
+    }
+/*
 $usernames = array('Ariel', 'Bert', 'Chloe', 'Dirk');
 $emails = array('ar@hotmail.com', 'bro@gmail.com', 'clowntje@skynet.be', 'd.evers@posthofvzw.be');
 $passwords = array('aaaaa', 'bbbb', 'ccccc', 'dddd');
 $ophaalpunten = array(1,2,3,4);
+*/
 
 $count_u = count($usernames);
 $count_e = count($emails);
 $count_p = count($passwords);
 $count_o = count($ophaalpunten);
 
-if( ($count_u != $count_e) || ($count_u != $count_p) || ($count_u != $count_o) )
+if( ($count_u != $count_e) || ($count_u != $count_p) || ($count_u != $count_o) || ($count_u != $CSVrows) )
 {
-    echo "ERROR: different counts U $count_u / E $count_e / P $count_p / O $count_o";
+    echo "ERROR: different counts U $count_u / E $count_e / P $count_p / O $count_o / CSV $CSVrows";
     exit;
 }
 else
 {
-    echo "same numbers of U $count_u / E $count_e / P $count_p / O $count_o";
+    echo "same numbers of U $count_u / E $count_e / P $count_p / O $count_o / CSV $CSVrows";
 }
 
 $count = $count_u;
+
 
 echo "<p>\n";
 
