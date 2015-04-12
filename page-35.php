@@ -12,11 +12,11 @@ get_header(); the_post(); ?>
             <p><?php echo _('<b>MyRecy</b> is de gepersonaliseerde website voor ophaalpunten van <b>kurk</b> en/of <b>kaarsresten</b>.'); ?></p>
             <p><?php echo _('U kan door deze website navigeren via het menu dat u bovenaan deze pagina vindt:'); ?></p>
             <ul>
-                <li><?php echo sprintf(_('indien u uw persoonlijke gegevens wilt nakijken of aanpassen, ga dan naar %s;'),'<a title="Profiel" href="https://myrecy.devlaspit.be/wp/wordpress/profiel-ophaalpunt/">'._('Profiel').'</a>'); ?></li>
-                <li><?php echo sprintf(_('om door te geven hoeveel zakken kurk en/of kaarsresten u momenteel in stock heeft, klikt u op %s;'),'<a title="Stock" href="https://myrecy.devlaspit.be/wp/wordpress/stock/">'._('Stock').'</a>'); ?></li>
-                <li><?php echo sprintf(_('als u een overzicht wenst van de eigen ingezamelde/opgehaalde hoeveelheden (en eventueel attesten) : %s;'),'<a title="Ophaalhistoriek" href="https://myrecy.devlaspit.be/wp/wordpress/ophaalhistoriek/">'._('Historiek').'</a>'); ?></li>
-                <li><?php echo sprintf(_('u kan ook De Vlaspit rechtstreeks contacteren via het %s;'),'<a title="Contact" href="https://myrecy.devlaspit.be/wp/wordpress/contact/">'._('Contactformulier').'</a>'); ?></li>
-                <li><?php echo sprintf(_('wanneer u klaar bent, klikt u op %s.'),'<a title="Log Out" href="https://myrecy.devlaspit.be/wp/wordpress/logout/?_wpnonce=920fc2c607">'._('Afmelden').'</a>'); ?></li>
+                <li><?php echo sprintf(_('indien u uw persoonlijke gegevens wilt nakijken of aanpassen, ga dan naar %s;'),'<a title="'._('Profiel').'" href="'.home_url().'/profiel-ophaalpunt/">'._('Profiel').'</a>'); ?></li>
+                <li><?php echo sprintf(_('om door te geven hoeveel zakken kurk en/of kaarsresten u momenteel in stock heeft, klikt u op %s;'),'<a title="'._('Stock').'" href="'.home_url().'/stock/">'._('Stock').'</a>'); ?></li>
+                <li><?php echo sprintf(_('als u een overzicht wenst van de eigen ingezamelde/opgehaalde hoeveelheden (en eventueel attesten) : %s;'),'<a title="'._('Historiek').'" href="'.home_url().'/ophaalhistoriek/">'._('Historiek').'</a>'); ?></li>
+                <li><?php echo sprintf(_('u kan ook De Vlaspit rechtstreeks contacteren via het %s;'),'<a title="'._('Contactformulier').'" href="'.home_url().'/contact/">'._('Contactformulier').'</a>'); ?></li>
+                <li><?php echo sprintf(_('wanneer u klaar bent, klikt u op %s.'),'<a title="'._('Afmelden').'" href="'.home_url().'/logout/">'._('Afmelden').'</a>'); ?></li>
             </ul>
         </div>
     </div>
