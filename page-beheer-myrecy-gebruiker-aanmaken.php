@@ -90,11 +90,11 @@ the_post(); ?>
 
             if($statement->execute())
             {
-                show_myrecy_message("good", sprintf(_("Nieuwe gebruiker <strong>%s</strong> (id %d) aangemaakt en gelinkt aan ophaalpunt %d: <em>%s</em>. Het wachtwoord is <em>%s</em>"),$user_name,$user_id, $ophaalpunt_id_from_form, $ophaalpunt_from_db->naam, $user_password));
+                show_myrecy_message("good", sprintf(_("Nieuwe gebruiker <strong>%s</strong> aangemaakt en gelinkt aan ophaalpunt %d: <em>%s</em>. Het wachtwoord is <em>%s</em>"),$user_name,$user_id, $ophaalpunt_from_db->naam, $user_password));
             }
             else
             {
-                show_myrecy_message("error", sprintf(_("Probleem met de databank (error %d) bij het linken van gebruiker %s (id %d) aan ophaalpunt %d: <em>%s</em>: %s"),$MYRECY_mysqli->errno,$user_name,$user_id,$ophaalpunt_id_from_form, $ophaalpunt_from_db->naam,$MYRECY_mysqli->error));
+                show_myrecy_message("error", sprintf(_("Probleem met de databank (error %d) bij het linken van gebruiker %s aan ophaalpunt %d: <em>%s</em>: %s"),$MYRECY_mysqli->errno,$user_name,$ophaalpunt_id_from_form, $ophaalpunt_from_db->naam,$MYRECY_mysqli->error));
                 exit;
             }
             $statement->close();
