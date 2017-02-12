@@ -118,6 +118,9 @@ function translate_title( $title, $id = null )
 {
 	switch($title)
 	{
+        case 'Log In | MYRECY TEST VERSIE':
+            return 'Joris';
+            break;
         case 'Log Out':
             return _('Afmelden');
             break;

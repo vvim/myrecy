@@ -1,0 +1,9 @@
+        <nav id="menu" class="primary">
+            <div class="menu-login-menu-container"><ul id="main-menu" class="menu"><li id="menu-item-37" class="logged-in-nav menu-item menu-item-type-post_type menu-item-object-page menu-item-37"><a href="https://myrecy.devlaspit.be/wp/wordpress/profiel-ophaalpunt/">Profiel</a></li>
+                <li id="menu-item-42" class="logged-in-nav menu-item menu-item-type-post_type menu-item-object-page menu-item-42"><a href="https://myrecy.devlaspit.be/wp/wordpress/stock/">Stock</a></li>
+                <li id="menu-item-54" class="logged-in-nav menu-item menu-item-type-post_type menu-item-object-page menu-item-54"><a href="https://myrecy.devlaspit.be/wp/wordpress/ophaalhistoriek/">Ophaalhistoriek</a></li>
+                <li id="menu-item-53" class="logged-in-nav menu-item menu-item-type-post_type menu-item-object-page menu-item-53"><a href="https://myrecy.devlaspit.be/wp/wordpress/materiaal/">Materiaal</a></li>
+                <li id="menu-item-52" class="logged-in-nav menu-item menu-item-type-post_type menu-item-object-page menu-item-52"><a href="https://myrecy.devlaspit.be/wp/wordpress/contact/">Contact</a></li>
+                <li id="menu-item-14" class="logged-in-nav menu-item menu-item-type-post_type menu-item-object-page menu-item-14"><a href="https://myrecy.devlaspit.be/wp/wordpress/logout/?_wpnonce=00dc3a661c">Log Out</a></li>
+                <li id="menu-item-17" class="logged-in-nav menu-item menu-item-type-post_type menu-item-object-page menu-item-17"><a href="https://myrecy.devlaspit.be/wp/wordpress/resetpass/">Reset Password</a></li>
+        </ul></div></nav>
