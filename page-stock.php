@@ -86,7 +86,7 @@ get_header(); the_post(); ?>
 
                     }
                     $statement->close();
-                    $aanmelding_id = mysql_insert_id();
+                    $aanmelding_id = mysqli_insert_id($MYRECY_mysqli);
 
                     // to really insert: http://stackoverflow.com/questions/16835753/inserting-data-to-table-mysqli-insert
         	}
